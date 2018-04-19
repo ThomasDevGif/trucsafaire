@@ -1,7 +1,40 @@
-<mat-card class="my-login-content">
-  <mat-card-header class="my-login-header">
-    Login
-  </mat-card-header>
-  <mat-card-content>content</mat-card-content>
-  <mat-card-actions>actions</mat-card-actions>
-</mat-card>
+<div class="my-login-container">
+  <mat-card class="my-login-content">
+    <mat-card-header class="my-login-header teal-green-grad">
+      <mat-icon>lock</mat-icon>
+      <span class="my-margin-left" style="margin-top: 2px;">Connexion</span>
+    </mat-card-header>
+    <mat-card-content class="my-card-content">
+      <form (ngSubmit)="signIn()" class="my-form">
+        <mat-form-field>
+          <input matInput placeholder="Identifiant">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mot de passe" type="password">
+        </mat-form-field>
+        <div class="my-center"><button mat-raised-button color="primary" class="btn-round btn-grad teal-green-grad" type="submit">Se connecter</button></div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="my-login-content">
+    <mat-card-header class="my-login-header blue-purple-grad">
+      <mat-icon>person</mat-icon>
+      <span class="my-margin-left" style="margin-top: 2px;">Inscription</span>
+    </mat-card-header>
+    <mat-card-content class="my-card-content">
+      <form (ngSubmit)="signUp()" class="my-form">
+        <mat-form-field>
+          <input matInput placeholder="Identifiant">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mot de passe" type="password">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mot de passe confirmation" type="password">
+        </mat-form-field>
+        <div class="my-center"><button mat-raised-button color="primary" class="btn-round btn-grad blue-purple-grad" type="submit">S'inscrire</button></div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

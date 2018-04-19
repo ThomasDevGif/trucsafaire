@@ -1,22 +1,40 @@
 .my-login-container {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .my-login-content {
-  margin: 60px;
+  margin: 50px;
+  flex: 1;
 }
 
 .my-login-header {
   background-color: #009688;
   color: #fff;
-
-  display: flex;
-  justify-content: center;
-
   padding-top: 30px;
   padding-bottom: 30px;
   margin-top: -50px !important;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.my-card-content { margin-top: 20px; }
+
+@media screen and (max-width: 640px) {
+  .my-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .my-login-content {
+    width: 90%;
+    margin-bottom: 5px;
+  }
 }

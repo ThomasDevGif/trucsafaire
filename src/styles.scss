@@ -3,7 +3,7 @@
 }
 
 html, body {
-  background-color: #fff;
+  background-color: #455A64;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -12,6 +12,18 @@ html, body {
   margin: 0;
   font-family: 'Roboto', Arial, sans-serif;
   font-smoothing: antialiased;
+}
+
+/* Components */
+.my-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-card-actions { /* Override angular material */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
 }
 
 /* Layouts */
@@ -47,14 +59,13 @@ html, body {
 
 /* Gradient button */
 .btn-grad {
-  text-transform: uppercase;
+  // text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
+  color: white !important;
 }
 
 .btn-grad:hover { background-position: right center; }
 
-.blue-grad { background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%); }
-
-.light-green-grad { background-image: linear-gradient(to right, #0cebeb 0%, #20e3b2 51%, #0cebeb 100%); }
+.teal-green-grad { background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC 51%, #02AAB0 100%); }
+.blue-purple-grad { background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%); }
