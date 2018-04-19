@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Rounded button */
+.btn-round {
+  border-radius: 25px !important;
+}
+
+/* Gradient button */
+.btn-grad {
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+}
+
+.btn-grad:hover { background-position: right center; }
+
+.blue-grad { background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%); }
+
+.light-green-grad { background-image: linear-gradient(to right, #0cebeb 0%, #20e3b2 51%, #0cebeb 100%); }
