@@ -1,0 +1,22 @@
+.my-login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.my-login-content {
+  margin: 60px;
+}
+
+.my-login-header {
+  background-color: #009688;
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: -50px !important;
+
+  border-radius: 5px;
+}

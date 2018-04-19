@@ -1,4 +1,44 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-smoothing: antialiased;
+}
+
+/* Layouts */
+.my-row {
+  display: flex;
+  align-items: center;
+}
+
+.my-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Space */
+.my-margin-left { margin-left: 5px; }
+.my-margin-right { margin-right: 5px; }
+.my-margin-top { margin-top: 5px; }
+.my-margin-bottom { margin-bottom: 5px; }
+
+/* Colors */
+.white-text { color: #fff; }
 
 /* Rounded button */
 .btn-round {
