@@ -11,6 +11,8 @@ import { List } from '../../models/list';
 import { Item } from '../../models/item';
 import { User } from '../../models/user';
 
+import * as moment from 'moment';
+
 declare var jquery:any;
 declare var $ :any;
 
@@ -115,25 +117,27 @@ export class ListComponent implements OnInit {
       id: null,
       name: this.newItemCtrl.value,
       done: false,
-      date: '20/04//2018',
-      listId: 1
+      date: moment().format("DD/MM/YYYY"),
+      listId: this.selectedList.id
     }
 
-    let scope = this;
-    scope.loading = true;
-    scope.itemService.createItem(item)
-    .then(function() {
-      this.newItemCtrl.setValue('');
-      return scope.refreshItems();
+    // Send item to server
+    let self = this;
+    self.loading = true;
+    self.itemService.createItem(item)
+    .then(function(res) {
+      self.newItemCtrl.setValue('');
+      return self.refreshItems();
     });
   }
 
   checkItem(item:Item) {
-    item.done = true;
-  }
-
-  uncheckItem(item:Item) {
-    item.done = false;
+    let self = this;
+    self.loading = true;
+    item.done = !item.done;
+    self.itemService.updateItem(item).then(function(res) {
+      self.loading = false;
+    });
   }
 
   toggleNewItemInput(show:boolean) {

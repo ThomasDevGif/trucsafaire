@@ -8,7 +8,7 @@ $db = $database->getConnection();
 $data = json_decode(file_get_contents("php://input"));
 $listId = $data;
 
-$sql = "SELECT * FROM item WHERE listId = :listId ORDER BY id";
+$sql = "SELECT * FROM item WHERE listId = :listId ORDER BY name";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':listId', $listId);
 $stmt->execute();

@@ -37,7 +37,7 @@
             <mat-icon>add</mat-icon>
             <span>Ajouter un élément</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="refreshItems()">
             <mat-icon>refresh</mat-icon>
             <span>Actualiser</span>
           </button>
@@ -75,7 +75,7 @@
           <mat-divider class="my-margin-top"></mat-divider>
           <h3 mat-subheader>Faits</h3>
           <mat-list-item *ngFor="let item of filterItems(true)" class="my-item">
-            <mat-icon mat-list-icon class="my-pointer" (click)="uncheckItem(item)">check_box</mat-icon>
+            <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box</mat-icon>
             <h4 mat-line class="my-row-between">
               <span>{{item.name}}</span>
               <button mat-icon-button (click)="openConfirmDialog(deleteItemMessage)">
