@@ -39,6 +39,12 @@ html, body {
   align-items: center;
 }
 
+.my-row-between {
+  display: flex  !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
 .my-column {
   display: flex;
   flex-direction: column;

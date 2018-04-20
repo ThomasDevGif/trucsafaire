@@ -1,0 +1,26 @@
+<div class="my-container">
+  <span class="my-spacer hide-sm"></span>
+
+  <div class="my-profile-container">
+    <mat-card>
+      <mat-card-header>
+        <div class="my-row my-profile-title">
+          <mat-icon>person</mat-icon>
+          <span class="my-margin-left">{{loggedUser.name}}</span>
+        </div>
+        <span class="my-large-spacer"></span>
+        <button mat-icon-button color="primary" (click)="logout()">
+          <mat-icon aria-label="logout">power_settings_new</mat-icon>
+        </button>
+      </mat-card-header>
+    </mat-card>
+
+    <mat-card style="margin-top: 20px;">
+      <mat-card-content>
+        ...
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <span class="my-spacer hide-sm"></span>
+</div>

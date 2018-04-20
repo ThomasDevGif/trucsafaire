@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { PasswordValidation } from './password-validation';
+import { AuthentificationService } from '../../services/authentification/authentification.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
   confirmPasswordRegisterCtrl: FormControl;
 
   constructor(
+    private authentificationService: AuthentificationService,
     private router: Router,
     fb: FormBuilder
   ) {
@@ -49,7 +52,13 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    console.log('signIn');
+    let user: User = {
+      id: null,
+      name: this.identifiantCtrl.value,
+      password: this.passwordCtrl.value
+    }
+    // TODO: get before user by login
+    this.authentificationService.login(user);
   }
 
   signUp() {
