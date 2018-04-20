@@ -8,21 +8,26 @@ import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/materi
 import { MatMenuModule, MatListModule } from '@angular/material';
 
 import { AuthentificationService } from './services/authentification/authentification.service';
+import { ConverterService } from './utils/converter.service';
 import { UserService } from './services/user/user.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AutofocusDirective } from './directives/autofocus.directive';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ListComponent } from './components/list/list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AutofocusDirective,
     LoginComponent,
     ToolbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,7 @@ import { ProfileComponent } from './components/profile/profile.component';
   ],
   providers: [
     AuthentificationService,
+    ConverterService,
     UserService
   ],
   bootstrap: [AppComponent]

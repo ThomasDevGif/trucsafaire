@@ -1,0 +1,42 @@
+.my-container { display: flex; }
+
+.my-list-container {
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 90%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.my-spacer { width: 5%; }
+
+.my-lists {
+  width: 25%;
+  margin-right: 10px;
+}
+
+.my-list {
+  width: 75%;
+}
+
+.my-card-title {
+  color: #00ADB5;
+  display: flex;
+  align-items: center;
+}
+
+.my-list-item {
+  cursor: pointer;
+}
+
+.my-list-item:hover { background-color: #EEEEEE; }
+
+.my-item:hover { background-color: #EEEEEE; }
+
+@media screen and (max-width: 700px) {
+  .my-list-container { width: 100%; }
+  .my-list { width: 100%; }
+}

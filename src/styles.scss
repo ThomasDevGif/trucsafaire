@@ -1,3 +1,7 @@
+/* Variables */
+$warning: #FF5722;
+
+/* Styles */
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -20,6 +24,8 @@ html, body {
     display: none !important;
   }
 }
+
+.my-pointer { cursor: pointer; }
 
 /* Components */
 .my-form {
@@ -59,11 +65,17 @@ html, body {
 /* Space */
 .my-margin-left { margin-left: 5px; }
 .my-margin-right { margin-right: 5px; }
-.my-margin-top { margin-top: 5px; }
+.my-margin-top { margin-top: 5px !important; }
 .my-margin-bottom { margin-bottom: 5px; }
+
+.my-flex-spacer {
+  flex: 1 1 auto;
+}
 
 /* Colors */
 .white-text { color: #fff; }
+
+.hover-warning:hover { color: $warning; }
 
 /* Rounded button */
 .btn-round {

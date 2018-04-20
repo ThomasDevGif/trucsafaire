@@ -1,0 +1,86 @@
+<div class="my-container">
+  <span class="my-spacer hide-sm"></span>
+
+  <div class="my-list-container">
+    <mat-card class="my-lists hide-sm">
+      <mat-card-header class="my-card-title">
+        <span>Listes</span>
+        <span class="my-flex-spacer"></span>
+        <button mat-icon-button>
+          <mat-icon aria-label="ajouter">add</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item *ngFor="let list of lists" class="my-list-item" (click)="selectedList = list">
+            <p mat-line> {{list.name}} </p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="my-list">
+      <mat-card-header class="my-card-title">
+        <span>{{selectedList.name}}</span>
+        <span class="my-flex-spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="listMenu">
+          <mat-icon aria-label="options">more_vert</mat-icon>
+        </button>
+        <mat-menu #listMenu="matMenu">
+          <button mat-menu-item (click)="toggleNewItemInput(true)">
+            <mat-icon>add</mat-icon>
+            <span>Ajouter un élément</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>refresh</mat-icon>
+            <span>Actualiser</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item>
+            <mat-icon>share</mat-icon>
+            <span>Partager</span>
+          </button>
+          <button mat-menu-item class="hover-warning">
+            <mat-icon>delete</mat-icon>
+            <span>Supprimer</span>
+          </button>
+        </mat-menu>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <h3 mat-subheader>A faire</h3>
+          <mat-list-item *ngFor="let item of filterItems(false)" class="my-item my-margin-bottom">
+            <mat-icon mat-list-icon class="my-pointer">check_box_outline_blank</mat-icon>
+            <h4 mat-line class="my-row-between">
+              <span>{{item.name}}</span>
+              <button mat-icon-button>
+                <mat-icon aria-label="delete">close</mat-icon>
+              </button>
+            </h4>
+          </mat-list-item>
+
+          <form *ngIf="showNewItemInput" (ngSubmit)="addItem()" class="my-row" [formGroup]="newItemForm">
+            <mat-form-field style="flex: 1;">
+              <input matInput myAutofocus placeholder="Label" formControlName="newItem" name="newItem">
+            </mat-form-field>
+            <mat-icon aria-label="Close" class="my-pointer" (click)="toggleNewItemInput(false)">close</mat-icon>
+          </form>
+
+          <mat-divider class="my-margin-top"></mat-divider>
+          <h3 mat-subheader>Faits</h3>
+          <mat-list-item *ngFor="let item of filterItems(true)" class="my-item">
+            <mat-icon mat-list-icon class="my-pointer">check_box</mat-icon>
+            <h4 mat-line class="my-row-between">
+              <span>{{item.name}}</span>
+              <button mat-icon-button>
+                <mat-icon aria-label="delete">close</mat-icon>
+              </button>
+            </h4>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <span class="my-spacer hide-sm"></span>
+</div>
