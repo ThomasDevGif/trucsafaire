@@ -40,7 +40,7 @@
             <mat-icon>share</mat-icon>
             <span>Partager</span>
           </button>
-          <button mat-menu-item class="hover-warning">
+          <button mat-menu-item class="hover-warning" (click)="openConfirmDialog(deleteListMessage)">
             <mat-icon>delete</mat-icon>
             <span>Supprimer</span>
           </button>
@@ -50,10 +50,10 @@
         <mat-list>
           <h3 mat-subheader>A faire</h3>
           <mat-list-item *ngFor="let item of filterItems(false)" class="my-item my-margin-bottom">
-            <mat-icon mat-list-icon class="my-pointer">check_box_outline_blank</mat-icon>
+            <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box_outline_blank</mat-icon>
             <h4 mat-line class="my-row-between">
               <span>{{item.name}}</span>
-              <button mat-icon-button>
+              <button mat-icon-button (click)="openConfirmDialog(deleteItemMessage)">
                 <mat-icon aria-label="delete">close</mat-icon>
               </button>
             </h4>
@@ -69,10 +69,10 @@
           <mat-divider class="my-margin-top"></mat-divider>
           <h3 mat-subheader>Faits</h3>
           <mat-list-item *ngFor="let item of filterItems(true)" class="my-item">
-            <mat-icon mat-list-icon class="my-pointer">check_box</mat-icon>
+            <mat-icon mat-list-icon class="my-pointer" (click)="uncheckItem(item)">check_box</mat-icon>
             <h4 mat-line class="my-row-between">
               <span>{{item.name}}</span>
-              <button mat-icon-button>
+              <button mat-icon-button (click)="openConfirmDialog(deleteItemMessage)">
                 <mat-icon aria-label="delete">close</mat-icon>
               </button>
             </h4>

@@ -5,7 +5,8 @@ import { HttpModule }    from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
-import { MatMenuModule, MatListModule } from '@angular/material';
+import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material';
 
 import { AuthentificationService } from './services/authentification/authentification.service';
 import { ConverterService } from './utils/converter.service';
@@ -18,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ListComponent } from './components/list/list.component';
+import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
 
 
 @NgModule({
@@ -27,12 +29,14 @@ import { ListComponent } from './components/list/list.component';
     LoginComponent,
     ToolbarComponent,
     ProfileComponent,
-    ListComponent
+    ListComponent,
+    DialogConfirmComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     AppRoutingModule,
     MatButtonModule,
@@ -42,13 +46,16 @@ import { ListComponent } from './components/list/list.component';
     MatCardModule,
     MatInputModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthentificationService,
     ConverterService,
     UserService
   ],
+  entryComponents: [DialogConfirmComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

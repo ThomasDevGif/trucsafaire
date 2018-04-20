@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthentificationService } from '../../services/authentification/authentification.service';
 import { ConverterService } from '../../utils/converter.service';
+import { DialogConfirmComponent } from '../../components/dialog-confirm/dialog-confirm.component';
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
 import { User } from '../../models/user';
@@ -63,11 +65,16 @@ export class ListComponent implements OnInit {
   newItemForm: FormGroup;
   newItemCtrl: FormControl;
 
+  // Dialogs confirm
+  deleteListMessage:string = 'Cliquer sur SUPPRIMER effacera la liste et tous les items associés.';
+  deleteItemMessage:string = 'Supprimer cet élément ?';
+
   constructor(
     private authentificationService: AuthentificationService,
     private converterService: ConverterService,
     private router: Router,
-    fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) {
     this.newItemCtrl = fb.control('', [ Validators.required ]);
     this.newItemForm = fb.group({
@@ -79,9 +86,10 @@ export class ListComponent implements OnInit {
     this.loggedUser = this.authentificationService.getUser();
 
     // If no logged user in local storage, redirect to login page
-    // if (undefined == this.loggedUser) { this.router.navigate(['/login']) }
-
-    this.intializeList();
+    if (undefined == this.loggedUser) { this.router.navigate(['/login']) }
+    else {
+      this.intializeList();
+    }
   }
 
   intializeList() {
@@ -111,8 +119,25 @@ export class ListComponent implements OnInit {
     this.newItemCtrl.setValue('');
   }
 
+  checkItem(item:Item) {
+    item.done = true;
+  }
+
+  uncheckItem(item:Item) {
+    item.done = false;
+  }
+
   toggleNewItemInput(show:boolean) {
     this.showNewItemInput = show;
   }
 
+  openConfirmDialog(message:string) {
+    this.dialog.open(DialogConfirmComponent, {
+      data: {
+        message: message,
+        cancel: 'Annuler',
+        validate: 'Supprimer'
+      }
+    });
+  }
 }

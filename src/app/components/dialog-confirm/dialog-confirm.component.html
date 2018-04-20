@@ -1,0 +1,5 @@
+<mat-dialog-content>{{data.message}}</mat-dialog-content>
+<mat-dialog-actions class="my-card-actions">
+  <button mat-button mat-dialog-close>{{data.cancel}}</button>
+  <button mat-button color="warn" [mat-dialog-close]="true">{{data.validate}}</button>
+</mat-dialog-actions>

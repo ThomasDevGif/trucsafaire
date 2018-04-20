@@ -12,7 +12,6 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-
   createUser(user: User) : Promise<any> {
     return this.http.post(this.baseUrl + 'user/createUser.php', user)
     .toPromise()
