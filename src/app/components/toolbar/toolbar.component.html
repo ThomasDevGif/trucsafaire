@@ -1,9 +1,24 @@
 <mat-toolbar color="primary" class="my-toolbar">
   <mat-toolbar-row>
-    <span class="my-margin-right">Trucsafaire</span>
-    <button mat-button [routerLink]="'/login'">Profile</button>
-    <button mat-button [routerLink]="'/'">Listes</button>
-    <button mat-button [routerLink]="'/'">Cuisine</button>
+    <span class="my-margin-right hide-sm">Trucsafaire</span>
+    <button mat-button [routerLink]="'/login'" class="my-row">
+      <mat-icon>person</mat-icon>
+      <span class="hide-sm">Profile</span>
+    </button>
+    <button mat-button [routerLink]="'/'" class="my-row">
+      <mat-icon>list</mat-icon>
+      <span class="hide-sm">Listes</span>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuKitchen" class="my-row">
+      <mat-icon>local_dining</mat-icon>
+      <span class="hide-sm">Cuisine</span>
+    </button>
+    <mat-menu #menuKitchen="matMenu">
+      <button mat-menu-item>Recettes</button>
+      <button mat-menu-item>Ingredients</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Que mange t'on ?</button>
+    </mat-menu>
     <span class="my-toolbar-spacer"></span>
   </mat-toolbar-row>
 </mat-toolbar>

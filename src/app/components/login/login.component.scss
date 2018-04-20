@@ -10,7 +10,6 @@
 }
 
 .my-login-header {
-  background-color: #009688;
   color: #fff;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -25,6 +24,10 @@
 }
 
 .my-card-content { margin-top: 20px; }
+
+.my-login-color { background-color: #393E46; }
+
+.my-register-color { background-color: #00ADB5; color: #fff; }
 
 @media screen and (max-width: 640px) {
   .my-login-container {

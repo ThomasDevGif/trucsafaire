@@ -3,7 +3,7 @@
 }
 
 html, body {
-  background-color: #455A64;
+  background-color: #EEEEEE;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -12,6 +12,13 @@ html, body {
   margin: 0;
   font-family: 'Roboto', Arial, sans-serif;
   font-smoothing: antialiased;
+}
+
+/* Utils */
+@media screen and (max-width: 700px) {
+  .hide-sm {
+    display: none !important;
+  }
 }
 
 /* Components */
@@ -69,3 +76,9 @@ html, body {
 
 .teal-green-grad { background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC 51%, #02AAB0 100%); }
 .blue-purple-grad { background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%); }
+.lightblue-blue-grad { background-image: linear-gradient(to right, #00c6ff 0%, #0072ff 51%, #00c6ff 100%); }
+.purple-red-grad { background-image: linear-gradient(to right, #7b4397 0%, #dc2430 51%, #7b4397 100%); }
+.salmon-orange-grad { background-image: linear-gradient(to right, #FFAFBD 0%, #ffc3a0 51%, #FFAFBD 100%); }
+.purple-teal-grad { background-image: linear-gradient(to right, #fc00ff 0%, #00dbde 51%, #fc00ff 100%); }
+.teal-purple-grad { background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 51%, #00dbde 100%); }
+.grey-black-grad { background-image: linear-gradient(to right, #bdc3c7 0%, #2c3e50 51%, #bdc3c7 100%); }
