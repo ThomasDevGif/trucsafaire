@@ -1,4 +1,4 @@
-<div class="my-container">
+<div *ngIf="!loading" class="my-container">
   <span class="my-spacer hide-sm"></span>
 
   <div class="my-list-container">
@@ -12,8 +12,14 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list role="list">
-          <mat-list-item *ngFor="let list of lists" class="my-list-item" (click)="selectedList = list">
+          <h3 mat-subheader>Mes listes</h3>
+          <mat-list-item *ngFor="let list of lists" class="my-list-item" (click)="onSelectedListChange(list)">
             <p mat-line> {{list.name}} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <h3 mat-subheader>Partagées avec moi</h3>
+          <mat-list-item *ngFor="let sharedList of sharedLists" class="my-list-item" (click)="onSelectedListChange(sharedList)">
+            <p mat-line> {{sharedList.name}} </p>
           </mat-list-item>
         </mat-list>
       </mat-card-content>

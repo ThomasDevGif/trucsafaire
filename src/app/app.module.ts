@@ -11,6 +11,8 @@ import { MatSnackBarModule } from '@angular/material';
 import { AuthentificationService } from './services/authentification/authentification.service';
 import { ConverterService } from './utils/converter.service';
 import { UserService } from './services/user/user.service';
+import { ListService } from './services/list/list.service';
+import { ItemService } from './services/item/item.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AutofocusDirective } from './directives/autofocus.directive';
@@ -53,7 +55,9 @@ import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confi
   providers: [
     AuthentificationService,
     ConverterService,
-    UserService
+    UserService,
+    ListService,
+    ItemService
   ],
   entryComponents: [DialogConfirmComponent],
   bootstrap: [AppComponent]

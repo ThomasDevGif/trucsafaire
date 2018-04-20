@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthentificationService } from '../../services/authentification/authentification.service';
+import { ListService } from '../../services/list/list.service';
+import { ItemService } from '../../services/item/item.service';
 import { ConverterService } from '../../utils/converter.service';
 import { DialogConfirmComponent } from '../../components/dialog-confirm/dialog-confirm.component';
 import { List } from '../../models/list';
@@ -20,42 +22,10 @@ declare var $ :any;
 export class ListComponent implements OnInit {
 
   loading: boolean;
-  lists: List[] = [
-    {
-      id: 1,
-      name: 'Une super liste avec un nom tellement long',
-      userId: null
-    }, {
-      id: 2,
-      name: 'a',
-      userId: null
-    }
-  ];
+  lists: List[];
   sharedLists: List[];
-
-  items: Item[] = [
-    {
-      id: null,
-      name: 'Item',
-      done: false,
-      date: '20/04/2018',
-      listId: 1
-    }, {
-      id: null,
-      name: 'Item 1',
-      done: false,
-      date: '20/04/2018',
-      listId: 1
-    }, {
-      id: null,
-      name: 'Item 3',
-      done: true,
-      date: '20/04/2018',
-      listId: 1
-    }
-  ];
-
   selectedList: List;
+  items: Item[];
 
   // Logged user
   loggedUser: User;
@@ -71,6 +41,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private authentificationService: AuthentificationService,
+    private listService: ListService,
+    private itemService: ItemService,
     private converterService: ConverterService,
     private router: Router,
     private fb: FormBuilder,
@@ -88,16 +60,49 @@ export class ListComponent implements OnInit {
     // If no logged user in local storage, redirect to login page
     if (undefined == this.loggedUser) { this.router.navigate(['/login']) }
     else {
-      this.intializeList();
+      this.refreshList();
     }
   }
 
-  intializeList() {
-    this.selectedList = this.lists[0];
+  /** Refresh user lists from server */
+  refreshList() {
+    let self = this;
+    self.loading = true;
+    self.listService.getListsByUser(self.loggedUser)
+    .then(function(resLists) {
+      self.lists = resLists;
+      return self.listService.getSharedListsByUser(self.loggedUser);
+    })
+    .then(function(resSharedLists) {
+      self.sharedLists = resSharedLists;
+      self.selectedList = self.lists[0];
+      return self.refreshItems();
+    });
   }
 
-  filterItems(done:boolean): Item[] {
+  /** Refresh items from server */
+  refreshItems() {
+    let self = this;
+    self.loading = true;
+    self.itemService.getItemsByList(self.selectedList.id)
+    .then(function(resItems) {
+      self.items = self.converterService.convertBoolean(resItems);
+      self.loading = false;
+    });
+  }
+
+  /** Filter items by done */
+  filterItems(done: boolean) : Item[] {
+    if (this.items == null) {
+      return new Array<Item>();
+    }
     return this.items.filter(item => item.done == done);
+  }
+
+  onSelectedListChange(list: List) {
+    let self = this;
+    self.selectedList = list;
+    return self.refreshItems();
   }
 
   addItem() {
@@ -113,10 +118,14 @@ export class ListComponent implements OnInit {
       date: '20/04//2018',
       listId: 1
     }
-    // Add item to list
-    this.items.push(item);
-    // Refresh input
-    this.newItemCtrl.setValue('');
+
+    let scope = this;
+    scope.loading = true;
+    scope.itemService.createItem(item)
+    .then(function() {
+      this.newItemCtrl.setValue('');
+      return scope.refreshItems();
+    });
   }
 
   checkItem(item:Item) {
