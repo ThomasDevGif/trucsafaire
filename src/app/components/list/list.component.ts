@@ -39,7 +39,7 @@ export class ListComponent implements OnInit {
 
   // Dialogs confirm
   deleteListMessage:string = 'Cliquer sur SUPPRIMER effacera la liste et tous les items associés.';
-  deleteItemMessage:string = 'Supprimer cet élément ?';
+  deleteItemMessage:string = 'Supprimer ';
 
   constructor(
     private authentificationService: AuthentificationService,
@@ -144,12 +144,54 @@ export class ListComponent implements OnInit {
     this.showNewItemInput = show;
   }
 
-  openConfirmDialog(message:string) {
-    this.dialog.open(DialogConfirmComponent, {
+  /** Delete a list, sharedList data and associated items */
+  deleteList(list:List) {
+    console.log('deleteList');
+    let self = this;
+    self.loading = true;
+    self.listService.deleteSharedListByList(list)
+    .then(function() {
+      return self.itemService.deleteItemsByList(list);
+    })
+    .then(function() {
+      return self.listService.deleteList(list);
+    })
+    .then(function() {
+      self.loading = false;
+      return self.refreshList();
+    });
+  }
+
+  /** Delete an item */
+  deleteItem(item:Item) {
+    let self = this;
+    self.loading = true;
+    self.itemService.deleteItem(item)
+    .then(function(res) {
+      return self.refreshItems();
+    });
+  }
+
+  openConfirmDialog(message:string, object:object, type:string) {
+    let self = this;
+    let dialogRef = this.dialog.open(DialogConfirmComponent, {
       data: {
         message: message,
         cancel: 'Annuler',
-        validate: 'Supprimer'
+        validate: 'Supprimer',
+        object: object
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(function(res) {
+      if (!res) {
+        return;
+      }
+
+      if (type == 'item') {
+        return self.deleteItem(object as Item);
+      } else if (type == 'list') {
+        return self.deleteList(object as List);
       }
     });
   }

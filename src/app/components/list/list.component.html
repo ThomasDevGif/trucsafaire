@@ -46,7 +46,7 @@
             <mat-icon>share</mat-icon>
             <span>Partager</span>
           </button>
-          <button mat-menu-item class="hover-warning" (click)="openConfirmDialog(deleteListMessage)">
+          <button mat-menu-item class="hover-warning" (click)="openConfirmDialog(deleteListMessage, selectedList, 'list')">
             <mat-icon>delete</mat-icon>
             <span>Supprimer</span>
           </button>
@@ -59,7 +59,7 @@
             <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box_outline_blank</mat-icon>
             <h4 mat-line class="my-row-between">
               <span>{{item.name}}</span>
-              <button mat-icon-button (click)="openConfirmDialog(deleteItemMessage)">
+              <button mat-icon-button (click)="openConfirmDialog(deleteItemMessage + item.name + ' ?', item, 'item')">
                 <mat-icon aria-label="delete">close</mat-icon>
               </button>
             </h4>
@@ -78,7 +78,7 @@
             <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box</mat-icon>
             <h4 mat-line class="my-row-between">
               <span>{{item.name}}</span>
-              <button mat-icon-button (click)="openConfirmDialog(deleteItemMessage)">
+              <button mat-icon-button (click)="openConfirmDialog(deleteItemMessage + item.name + ' ?', item, 'item')">
                 <mat-icon aria-label="delete">close</mat-icon>
               </button>
             </h4>
