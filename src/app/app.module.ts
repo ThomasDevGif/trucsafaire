@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
 import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material';
 
 import { AuthentificationService } from './services/authentification/authentification.service';
@@ -22,6 +23,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ListComponent } from './components/list/list.component';
 import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
+import { DialogShareComponent } from './components/dialog-share/dialog-share.component';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confi
     ToolbarComponent,
     ProfileComponent,
     ListComponent,
-    DialogConfirmComponent
+    DialogConfirmComponent,
+    DialogShareComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confi
     MatMenuModule,
     MatListModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
   ],
   providers: [
     AuthentificationService,
@@ -59,7 +63,10 @@ import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confi
     ListService,
     ItemService
   ],
-  entryComponents: [DialogConfirmComponent],
+  entryComponents: [
+    DialogConfirmComponent,
+    DialogShareComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

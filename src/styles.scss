@@ -1,3 +1,5 @@
+/* Imports */
+
 /* Variables */
 $warning: #FF5722;
 
@@ -18,16 +20,23 @@ html, body {
   font-smoothing: antialiased;
 }
 
-/* Utils */
+/* Responsive */
 @media screen and (max-width: 700px) {
   .hide-sm {
     display: none !important;
+  }
+
+  .my-row-lg-col-sm {
+    display: flex;
+    flex-direction: column;
   }
 }
 
 .my-pointer { cursor: pointer; }
 
 /* Components */
+mat-card { border-radius: 8px !important;}
+
 .my-form {
   display: flex;
   flex-direction: column;
@@ -39,8 +48,15 @@ html, body {
   justify-content: flex-end !important;
 }
 
+.my-item:hover { background-color: #EEEEEE; }
+
 /* Layouts */
 .my-row {
+  display: flex;
+  align-items: center;
+}
+
+.my-row-lg-col-sm {
   display: flex;
   align-items: center;
 }
@@ -62,15 +78,14 @@ html, body {
   justify-content: center;
 }
 
+.my-full-width { width: 100%; }
+
 /* Space */
 .my-margin-left { margin-left: 5px; }
 .my-margin-right { margin-right: 5px; }
 .my-margin-top { margin-top: 5px !important; }
 .my-margin-bottom { margin-bottom: 5px; }
-
-.my-flex-spacer {
-  flex: 1 1 auto;
-}
+.my-flex-spacer {flex: 1 1 auto; }
 
 /* Colors */
 .white-text { color: #fff; }

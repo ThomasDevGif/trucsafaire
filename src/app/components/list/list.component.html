@@ -16,7 +16,7 @@
           <mat-list-item *ngFor="let list of lists" class="my-list-item" (click)="onSelectedListChange(list)">
             <p mat-line> {{list.name}} </p>
           </mat-list-item>
-          <mat-divider></mat-divider>
+          <mat-divider class="my-margin-top"></mat-divider>
           <h3 mat-subheader>Partagées avec moi</h3>
           <mat-list-item *ngFor="let sharedList of sharedLists" class="my-list-item" (click)="onSelectedListChange(sharedList)">
             <p mat-line> {{sharedList.name}} </p>
@@ -42,7 +42,7 @@
             <span>Actualiser</span>
           </button>
           <mat-divider></mat-divider>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openShareModal()">
             <mat-icon>share</mat-icon>
             <span>Partager</span>
           </button>

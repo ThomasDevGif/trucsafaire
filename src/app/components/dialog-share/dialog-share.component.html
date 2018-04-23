@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Partager la liste</h2>
+<mat-dialog-content class="my-dialog-content">
+  <div *ngIf="loading">Chargement...</div>
+  <div *ngIf="!loading">
+
+    <form (ngSubmit)="shareList()" class="my-row-lg-col-sm">
+      <mat-form-field class="my-full-width">
+        <input type="text" placeholder="Trouver quelqu'un..." aria-label="Qqn" matInput [formControl]="mySelectUserControl" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let user of filteredUsers | async" [value]="user.name">
+            {{user.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="accent" class="my-margin-left btn-round" [disabled]="!mySelectUserControl.value">Ajouter</button>
+    </form>
+
+    <mat-list>
+      <h3 mat-subheader>{{sharedUsers.length}} partage(s).</h3>
+      <mat-list-item *ngFor="let sharedUser of sharedUsers" class="my-item">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <h4 mat-line class="my-row-between">
+          <span>{{sharedUser.name}}</span>
+          <button mat-icon-button>
+            <mat-icon aria-label="delete" (click)="deleteSharedUserByList(sharedUser)">close</mat-icon>
+          </button>
+        </h4>
+      </mat-list-item>
+    </mat-list>
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="my-card-actions">
+  <button mat-button (click)="close()">Fermer</button>
+</mat-dialog-actions>

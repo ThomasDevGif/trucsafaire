@@ -1,5 +1,5 @@
 <mat-dialog-content>{{data.message}}</mat-dialog-content>
 <mat-dialog-actions class="my-card-actions">
   <button mat-button (click)="close(false)">{{data.cancel}}</button>
-  <button mat-button (click)="close(true)">{{data.validate}}</button>
+  <button mat-button (click)="close(true)" class="red-text">{{data.validate}}</button>
 </mat-dialog-actions>

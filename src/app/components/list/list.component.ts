@@ -7,6 +7,7 @@ import { ListService } from '../../services/list/list.service';
 import { ItemService } from '../../services/item/item.service';
 import { ConverterService } from '../../utils/converter.service';
 import { DialogConfirmComponent } from '../../components/dialog-confirm/dialog-confirm.component';
+import { DialogShareComponent } from '../../components/dialog-share/dialog-share.component';
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
 import { User } from '../../models/user';
@@ -26,6 +27,7 @@ export class ListComponent implements OnInit {
   loading: boolean;
   lists: List[];
   sharedLists: List[];
+  // selectedList: List = {id: 1, name: 'Liste', userId: 1};
   selectedList: List;
   items: Item[];
 
@@ -146,7 +148,6 @@ export class ListComponent implements OnInit {
 
   /** Delete a list, sharedList data and associated items */
   deleteList(list:List) {
-    console.log('deleteList');
     let self = this;
     self.loading = true;
     self.listService.deleteSharedListByList(list)
@@ -172,6 +173,7 @@ export class ListComponent implements OnInit {
     });
   }
 
+  /** Open generic dialog to confirm delete */
   openConfirmDialog(message:string, object:object, type:string) {
     let self = this;
     let dialogRef = this.dialog.open(DialogConfirmComponent, {
@@ -192,6 +194,16 @@ export class ListComponent implements OnInit {
         return self.deleteItem(object as Item);
       } else if (type == 'list') {
         return self.deleteList(object as List);
+      }
+    });
+  }
+
+  /** Open share modal */
+  openShareModal() {
+    let self = this;
+    let dialogRef = this.dialog.open(DialogShareComponent, {
+      data: {
+        list: self.selectedList
       }
     });
   }

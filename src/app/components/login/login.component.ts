@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     private authentificationService: AuthentificationService,
     private router: Router,
     public snackBar: MatSnackBar,
-    fb: FormBuilder
+    public fb: FormBuilder
   ) {
 
     this.identifiantCtrl = fb.control('', [ Validators.required ]);
