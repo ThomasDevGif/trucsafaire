@@ -25,6 +25,7 @@ export class DialogShareComponent implements OnInit {
 
   users:User[];
   sharedUsers: User[];
+  selectedUser: User;
 
   constructor(
     private listService: ListService,
@@ -77,16 +78,19 @@ export class DialogShareComponent implements OnInit {
   shareList() {
     let self = this;
     self.loading = true;
+    // Get user object to keep it id
     let users = self.getUsersByName(self.mySelectUserControl.value);
     if (!users) {
       return;
     }
+    // Create share object to post
     let sharedList = {
       listId: self.list.id,
       userId: users[0].id
     }
     self.listService.createSharedList(sharedList)
     .then(function(res) {
+      self.mySelectUserControl.setValue('');
       return self.refreshUsers();
     })
   }
