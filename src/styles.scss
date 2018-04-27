@@ -93,6 +93,17 @@ mat-card { border-radius: 8px !important;}
 
 .hover-warning:hover { color: $warning; }
 
+/* Badge */
+.badge {
+  padding: 1px 9px 2px;
+  font-size: 12.025px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #ffffff;
+  background-color: #999999;
+  border-radius: 9px;
+}
+
 /* Rounded button */
 .btn-round {
   border-radius: 25px !important;

@@ -24,6 +24,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ListComponent } from './components/list/list.component';
 import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
 import { DialogShareComponent } from './components/dialog-share/dialog-share.component';
+import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DialogShareComponent } from './components/dialog-share/dialog-share.com
     ProfileComponent,
     ListComponent,
     DialogConfirmComponent,
-    DialogShareComponent
+    DialogShareComponent,
+    DialogLoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { DialogShareComponent } from './components/dialog-share/dialog-share.com
   ],
   entryComponents: [
     DialogConfirmComponent,
-    DialogShareComponent
+    DialogShareComponent,
+    DialogLoaderComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -54,7 +54,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list>
-          <h3 mat-subheader>A faire</h3>
+          <h3 mat-subheader>A faire <span class="badge my-margin-left">{{filterItems(false).length}}</span></h3>
           <mat-list-item *ngFor="let item of filterItems(false)" class="my-item my-margin-bottom">
             <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box_outline_blank</mat-icon>
             <h4 mat-line class="my-row-between">
@@ -73,7 +73,7 @@
           </form>
 
           <mat-divider class="my-margin-top"></mat-divider>
-          <h3 mat-subheader>Faits</h3>
+          <h3 mat-subheader>Faits <span class="badge my-margin-left">{{filterItems(true).length}}</span></h3>
           <mat-list-item *ngFor="let item of filterItems(true)" class="my-item">
             <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box</mat-icon>
             <h4 mat-line class="my-row-between">
