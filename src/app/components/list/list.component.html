@@ -6,11 +6,19 @@
       <mat-card-header class="my-card-title">
         <span>Listes</span>
         <span class="my-flex-spacer"></span>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="showNewListInput = true">
           <mat-icon aria-label="ajouter">add</mat-icon>
         </button>
       </mat-card-header>
       <mat-card-content>
+
+        <form *ngIf="showNewListInput" (ngSubmit)="createList()" class="my-row" [formGroup]="newListForm">
+          <mat-form-field style="flex: 1;">
+            <input matInput myAutofocus placeholder="Label" formControlName="newList" name="newList">
+          </mat-form-field>
+          <mat-icon aria-label="Close" class="my-pointer" (click)="showNewListInput = false">close</mat-icon>
+        </form>
+
         <mat-list role="list">
           <h3 mat-subheader>Mes listes</h3>
           <mat-list-item *ngFor="let list of lists" class="my-list-item" (click)="onSelectedListChange(list)">

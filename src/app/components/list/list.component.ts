@@ -34,6 +34,11 @@ export class ListComponent implements OnInit {
   // Logged user
   loggedUser: User;
 
+  // New list
+  showNewListInput: boolean = false;
+  newListForm: FormGroup;
+  newListCtrl: FormControl;
+
   // New item
   showNewItemInput: boolean = false;
   newItemForm: FormGroup;
@@ -55,6 +60,11 @@ export class ListComponent implements OnInit {
     this.newItemCtrl = fb.control('', [ Validators.required ]);
     this.newItemForm = fb.group({
       newItem: this.newItemCtrl
+    });
+
+    this.newListCtrl = fb.control('', [ Validators.required ]);
+    this.newListForm = fb.group({
+      newList: this.newListCtrl
     });
   }
 
@@ -84,6 +94,27 @@ export class ListComponent implements OnInit {
     });
   }
 
+  /** Create list on db */
+  createList() {
+    let self = this;
+    if ('' == self.newListCtrl.value) {
+      return;
+    }
+
+    let list : List = {
+      id: null,
+      name: self.newListCtrl.value,
+      userId: self.authentificationService.getUser().id
+    }
+
+    self.loading = true;
+    self.listService.createList(list)
+    .then(function() {
+      self.newListCtrl.setValue('');
+      return self.refreshList();
+    });
+  }
+
   /** Refresh items from server */
   refreshItems() {
     let self = this;
@@ -109,6 +140,7 @@ export class ListComponent implements OnInit {
     return self.refreshItems();
   }
 
+  /** Create item in db */
   addItem() {
     if ('' == this.newItemCtrl.value) {
       return;
@@ -133,6 +165,7 @@ export class ListComponent implements OnInit {
     });
   }
 
+  /** Set done to true */
   checkItem(item:Item) {
     let self = this;
     self.loading = true;
