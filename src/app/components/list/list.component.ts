@@ -8,6 +8,7 @@ import { ItemService } from '../../services/item/item.service';
 import { ConverterService } from '../../utils/converter.service';
 import { DialogConfirmComponent } from '../../components/dialog-confirm/dialog-confirm.component';
 import { DialogShareComponent } from '../../components/dialog-share/dialog-share.component';
+import { DialogLoaderComponent } from '../dialog-loader/dialog-loader.component';
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
 import { User } from '../../models/user';
@@ -24,10 +25,10 @@ declare var $ :any;
 })
 export class ListComponent implements OnInit {
 
-  loading: boolean;
+  dialogRef: any = null;
+  inputSelectedList = new FormControl();
   lists: List[];
   sharedLists: List[];
-  // selectedList: List = {id: 1, name: 'Liste', userId: 1};
   selectedList: List;
   items: Item[];
 
@@ -81,7 +82,11 @@ export class ListComponent implements OnInit {
   /** Refresh user lists from server */
   refreshList() {
     let self = this;
-    self.loading = true;
+
+    if (null == self.dialogRef) {
+      self.dialogRef = self.dialog.open(DialogLoaderComponent);
+    }
+
     self.listService.getListsByUser(self.loggedUser)
     .then(function(resLists) {
       self.lists = resLists;
@@ -92,6 +97,12 @@ export class ListComponent implements OnInit {
       self.selectedList = self.lists[0];
       return self.refreshItems();
     });
+  }
+
+  onSelectedListChange(list: List) {
+    let self = this;
+    self.selectedList = list;
+    return self.refreshItems();
   }
 
   /** Create list on db */
@@ -107,7 +118,10 @@ export class ListComponent implements OnInit {
       userId: self.authentificationService.getUser().id
     }
 
-    self.loading = true;
+    if (null == self.dialogRef) {
+      self.dialogRef = self.dialog.open(DialogLoaderComponent);
+    }
+
     self.listService.createList(list)
     .then(function() {
       self.newListCtrl.setValue('');
@@ -118,11 +132,16 @@ export class ListComponent implements OnInit {
   /** Refresh items from server */
   refreshItems() {
     let self = this;
-    self.loading = true;
+
+    if (null == self.dialogRef) {
+      self.dialogRef = self.dialog.open(DialogLoaderComponent);
+    }
+
     self.itemService.getItemsByList(self.selectedList.id)
     .then(function(resItems) {
       self.items = self.converterService.convertBoolean(resItems);
-      self.loading = false;
+      self.dialogRef.close();
+      self.dialogRef = null;
     });
   }
 
@@ -134,12 +153,6 @@ export class ListComponent implements OnInit {
     return this.items.filter(item => item.done == done);
   }
 
-  onSelectedListChange(list: List) {
-    let self = this;
-    self.selectedList = list;
-    return self.refreshItems();
-  }
-
   /** Create item in db */
   addItem() {
     if ('' == this.newItemCtrl.value) {
@@ -148,96 +161,120 @@ export class ListComponent implements OnInit {
 
     // Create item object
     let item: Item = {
-      id: null,
-      name: this.newItemCtrl.value,
-      done: false,
-      date: moment().format("DD/MM/YYYY"),
-      listId: this.selectedList.id
+    id: null,
+    name: this.newItemCtrl.value,
+    done: false,
+    date: moment().format("DD/MM/YYYY"),
+    listId: this.selectedList.id
+  }
+
+  // Send item to server
+  let self = this;
+
+  if (null == self.dialogRef) {
+    self.dialogRef = self.dialog.open(DialogLoaderComponent);
+  }
+
+  self.itemService.createItem(item)
+  .then(function(res) {
+    self.newItemCtrl.setValue('');
+    return self.refreshItems();
+  });
+}
+
+/** Set done to true */
+checkItem(item:Item) {
+  let self = this;
+
+  if (null == self.dialogRef) {
+    self.dialogRef = self.dialog.open(DialogLoaderComponent);
+  }
+
+  item.done = !item.done;
+  self.itemService.updateItem(item).then(function(res) {
+    self.dialogRef.close();
+    self.dialogRef = null;
+  });
+}
+
+toggleNewItemInput(show:boolean) {
+  this.showNewItemInput = show;
+}
+
+/** Delete a list, sharedList data and associated items */
+deleteList(list:List) {
+  let self = this;
+
+  if (null == self.dialogRef) {
+    self.dialogRef = self.dialog.open(DialogLoaderComponent);
+  }
+
+  self.listService.deleteSharedListByList(list)
+  .then(function() {
+    return self.itemService.deleteItemsByList(list);
+  })
+  .then(function() {
+    return self.listService.deleteList(list);
+  })
+  .then(function() {
+    self.dialogRef.close();
+    self.dialogRef = null;
+    return self.refreshList();
+  });
+}
+
+/** Delete an item */
+deleteItem(item:Item) {
+  let self = this;
+
+  if (null == self.dialogRef) {
+    self.dialogRef = self.dialog.open(DialogLoaderComponent);
+  }
+
+  self.itemService.deleteItem(item)
+  .then(function(res) {
+    return self.refreshItems();
+  });
+}
+
+/** Open generic dialog to confirm delete */
+openConfirmDialog(message:string, object:object, type:string) {
+  let self = this;
+  let dialogRef = this.dialog.open(DialogConfirmComponent, {
+    data: {
+      message: message,
+      cancel: 'Annuler',
+      validate: 'Supprimer',
+      object: object
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(function(res) {
+    if (!res) {
+      return;
     }
 
-    // Send item to server
-    let self = this;
-    self.loading = true;
-    self.itemService.createItem(item)
-    .then(function(res) {
-      self.newItemCtrl.setValue('');
-      return self.refreshItems();
-    });
-  }
+    if (type == 'item') {
+      return self.deleteItem(object as Item);
+    } else if (type == 'list') {
+      return self.deleteList(object as List);
+    }
+  });
+}
 
-  /** Set done to true */
-  checkItem(item:Item) {
-    let self = this;
-    self.loading = true;
-    item.done = !item.done;
-    self.itemService.updateItem(item).then(function(res) {
-      self.loading = false;
-    });
-  }
+/** Event on input select changes */
+onSelectChange() {
+  this.selectedList = this.inputSelectedList.value as List;
+  return this.refreshItems();
+}
 
-  toggleNewItemInput(show:boolean) {
-    this.showNewItemInput = show;
-  }
-
-  /** Delete a list, sharedList data and associated items */
-  deleteList(list:List) {
-    let self = this;
-    self.loading = true;
-    self.listService.deleteSharedListByList(list)
-    .then(function() {
-      return self.itemService.deleteItemsByList(list);
-    })
-    .then(function() {
-      return self.listService.deleteList(list);
-    })
-    .then(function() {
-      self.loading = false;
-      return self.refreshList();
-    });
-  }
-
-  /** Delete an item */
-  deleteItem(item:Item) {
-    let self = this;
-    self.loading = true;
-    self.itemService.deleteItem(item)
-    .then(function(res) {
-      return self.refreshItems();
-    });
-  }
-
-  /** Open generic dialog to confirm delete */
-  openConfirmDialog(message:string, object:object, type:string) {
-    let self = this;
-    let dialogRef = this.dialog.open(DialogConfirmComponent, {
-      data: {
-        message: message,
-        cancel: 'Annuler',
-        validate: 'Supprimer',
-        object: object
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(function(res) {
-      if (!res) {
-        return;
-      }
-
-      if (type == 'item') {
-        return self.deleteItem(object as Item);
-      } else if (type == 'list') {
-        return self.deleteList(object as List);
-      }
-    });
-  }
-
-  /** Open share modal */
-  openShareModal() {
-    let self = this;
-    let dialogRef = this.dialog.open(DialogShareComponent, {
-      data: {
-        list: self.selectedList
-      }
-    });
-  }
+/** Open share modal */
+openShareModal() {
+  let self = this;
+  let dialogRef = this.dialog.open(DialogShareComponent, {
+    data: {
+      list: self.selectedList
+    }
+  });
+}
 }

@@ -1,7 +1,36 @@
-<div *ngIf="!loading" class="my-container">
+<div *ngIf="!dialogRef" class="my-container">
   <span class="my-spacer hide-sm"></span>
 
   <div class="my-list-container">
+    <mat-card class="my-full-width show-sm">
+      <mat-card-content class="my-column">
+        <div class="my-row">
+          <mat-form-field style="flex: 1">
+            <mat-select placeholder="Choisir une liste" [formControl]="inputSelectedList" (change)="onSelectChange()">
+              <mat-option *ngFor="let list of lists" [value]="list">
+                {{ list.name }}
+              </mat-option>
+              <mat-divider></mat-divider>
+              <mat-option *ngFor="let sharedList of sharedLists" [value]="sharedList">
+                {{ sharedList.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button (click)="showNewListInput = true">
+            <mat-icon aria-label="ajouter">add</mat-icon>
+          </button>
+        </div>
+
+        <form *ngIf="showNewListInput" (ngSubmit)="createList()" class="my-row" [formGroup]="newListForm">
+          <mat-form-field style="flex: 1;">
+            <input matInput myAutofocus placeholder="Label" formControlName="newList" name="newList">
+          </mat-form-field>
+          <mat-icon aria-label="Close" class="my-pointer" (click)="showNewListInput = false">close</mat-icon>
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+
     <mat-card class="my-lists hide-sm">
       <mat-card-header class="my-card-title">
         <span>Listes</span>

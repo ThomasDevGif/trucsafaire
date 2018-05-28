@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
 import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material';
 
@@ -56,7 +57,8 @@ import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.
     MatListModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSelectModule
   ],
   providers: [
     AuthentificationService,

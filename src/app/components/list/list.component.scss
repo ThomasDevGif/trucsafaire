@@ -39,6 +39,15 @@
 .my-list-item:hover { background-color: #EEEEEE; }
 
 @media screen and (max-width: 700px) {
-  .my-list-container { width: 100%; }
-  .my-list { width: 100%; }
+  .my-list-container {
+    width: 100%;
+    flex-direction: column;
+  }
+  .my-list { width: 100%; margin-top: 5px; }
+  .my-lists { width: 100%; }
+}
+
+mat-list mat-list-item [mat-line] {
+  text-overflow: ellipsis;
+  white-space: wrap;
 }
