@@ -19,9 +19,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUser = this.authentificationService.getUser();
-
-    // If no logged user in local storage, redirect to login page
-    if (undefined == this.loggedUser) { this.router.navigate(['/login']) }
   }
 
   logout() {

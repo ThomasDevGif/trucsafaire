@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material';
 
+import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthentificationService } from './services/authentification/authentification.service';
 import { ConverterService } from './utils/converter.service';
 import { UserService } from './services/user/user.service';
@@ -67,6 +68,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatSelectModule
   ],
   providers: [
+    AuthenticationGuard,
     AuthentificationService,
     ConverterService,
     UserService,

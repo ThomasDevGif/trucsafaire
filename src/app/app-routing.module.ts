@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthenticationGuard } from './guards/authentication.guard';
+
 import { LoginComponent } from  './components/login/login.component';
 import { ProfileComponent } from  './components/profile/profile.component';
 import { ListComponent } from  './components/list/list.component';
@@ -13,16 +15,20 @@ const routes: Routes = [
     component: LoginComponent
   }, {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthenticationGuard]
   }, {
     path: 'recipes',
-    component: RecipeComponent
+    component: RecipeComponent,
+    canActivate: [AuthenticationGuard]
   }, {
     path: 'ingredients',
-    component: IngredientComponent
+    component: IngredientComponent,
+    canActivate: [AuthenticationGuard]
   }, {
     path: '',
-    component: ListComponent
+    component: ListComponent,
+    canActivate: [AuthenticationGuard]
   }
 ];
 

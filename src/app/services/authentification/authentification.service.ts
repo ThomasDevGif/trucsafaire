@@ -8,17 +8,21 @@ export class AuthentificationService {
 
   constructor(private router: Router) { }
 
-  login(user) {
+  public isLogged(): boolean {
+    return !!localStorage.getItem('user');
+  }
+
+  public login(user) {
     localStorage.setItem('user', JSON.stringify(user));
     this.router.navigate(['/profile']);
   }
 
-  logout() {
+  public logout() {
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
 
-  getUser() : User {
+  public getUser() : User {
     return JSON.parse(localStorage.getItem('user')) as User;
   }
 
