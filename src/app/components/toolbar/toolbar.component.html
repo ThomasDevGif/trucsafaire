@@ -1,24 +1,26 @@
-<mat-toolbar color="primary" class="my-toolbar">
+<mat-toolbar color="primary" class="my-toolbar shadow-1">
   <mat-toolbar-row>
-    <span class="my-margin-right hide-sm">Trucsafaire</span>
-    <button mat-button [routerLink]="['/profile']" class="my-row">
-      <mat-icon>person</mat-icon>
-      <span class="hide-sm">Profile</span>
-    </button>
-    <button mat-button [routerLink]="['/']" class="my-row">
-      <mat-icon>list</mat-icon>
-      <span class="hide-sm">Listes</span>
-    </button>
-    <button mat-button [matMenuTriggerFor]="menuKitchen" class="my-row">
-      <mat-icon>local_dining</mat-icon>
-      <span class="hide-sm">Cuisine</span>
-    </button>
-    <mat-menu #menuKitchen="matMenu">
-      <button mat-menu-item>Recettes</button>
-      <button mat-menu-item>Ingredients</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>Que mange t'on ?</button>
-    </mat-menu>
+    <span class="my-margin-right">Trucsafaire</span>
+    <div class="hide-sm">
+      <button mat-button [routerLink]="['/profile']" class="my-row">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-button [routerLink]="['/']" class="my-row">
+        <mat-icon>list</mat-icon>
+        <span>Listes</span>
+      </button>
+      <button mat-button [matMenuTriggerFor]="menuKitchen" class="my-row">
+        <mat-icon>local_dining</mat-icon>
+        <span>Cuisine</span>
+      </button>
+      <mat-menu #menuKitchen="matMenu">
+        <button mat-menu-item [routerLink]="['/recipes']">Recettes</button>
+        <button mat-menu-item [routerLink]="['/ingredients']">Ingredients</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Que mange t'on ?</button>
+      </mat-menu>
+    </div>
     <span class="my-flex-spacer"></span>
   </mat-toolbar-row>
 </mat-toolbar>

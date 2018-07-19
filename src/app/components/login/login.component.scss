@@ -9,6 +9,8 @@
   flex: 1;
 }
 
+mat-card { padding: 10px !important; }
+
 .my-login-header {
   color: #fff;
   padding-top: 30px;
@@ -26,18 +28,21 @@
 .my-card-content { margin-top: 20px; }
 
 .my-login-color { background-color: #393E46; }
-
+.my-login-color-text { color: #393E46; }
 .my-register-color { background-color: #00ADB5; color: #fff; }
+.my-register-color-text { color: #00ADB5; }
 
 @media screen and (max-width: 640px) {
   .my-login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
   }
 
   .my-login-content {
     width: 90%;
     margin-bottom: 5px;
+    margin-top: 5px;
   }
 }

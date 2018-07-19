@@ -1,0 +1,14 @@
+<div class="show-sm">
+<nav class="no-labels-nav">
+  <a *ngFor="let item of items; index as i"
+    class="no-labels-nav__action"
+    [routerLink]="item.link"
+    routerLinkActive #rla="routerLinkActive"
+    (click)="activeLink = item.link"
+    [ngClass]="{'no-labels-nav__action--active': activeLink === item.link,
+    'ic-margin-left': item == items[0],
+    'ic-margin-right': item == items[items.length-1]}">
+    <mat-icon class="no-labels-nav__icon">{{item.icon}}</mat-icon>
+  </a>
+</nav>
+</div>

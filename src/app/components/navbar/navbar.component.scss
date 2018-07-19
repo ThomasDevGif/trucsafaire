@@ -1,0 +1,27 @@
+@import '~material-bottom-nav';
+
+.ic-margin-left {
+  margin-left: 12px;
+}
+
+.ic-margin-right {
+  margin-right: 12px;
+}
+
+.no-labels-nav {
+  @include bottom-nav($background-color: #fff, $active-color: #00838F, $inactive-color: #BDBDBD, $hide-inactive-labels: true);
+}
+
+.no-labels-nav__action {
+  position: relative;
+}
+
+.no-labels-nav__action--active {
+  min-width: 32px;
+  max-width: 72px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  mat-icon {
+    margin-bottom: 0px !important;
+  }
+}

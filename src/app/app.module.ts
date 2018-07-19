@@ -26,6 +26,9 @@ import { ListComponent } from './components/list/list.component';
 import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
 import { DialogShareComponent } from './components/dialog-share/dialog-share.component';
 import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
+import { IngredientComponent } from './components/ingredient/ingredient.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.
     ListComponent,
     DialogConfirmComponent,
     DialogShareComponent,
-    DialogLoaderComponent
+    DialogLoaderComponent,
+    RecipeComponent,
+    IngredientComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
