@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{data.ingredient.name}}</h2>
+<mat-dialog-content>
+
+  <form (ngSubmit)="renameIngredient()" class="my-margin-top my-row" [formGroup]="ingredientForm">
+    <mat-form-field style="flex: 1;">
+      <input matInput myAutofocus placeholder="Renommer" formControlName="ingredientName" name="ingredientName">
+    </mat-form-field>
+    <button mat-icon-button [disabled]="loading" [ngClass]="{'success': renamed}">
+      <mat-icon aria-label="Rename">done</mat-icon>
+    </button>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{ingredient: data.ingredient.name, action: true}" color="warn">Supprimer</button>
+  <button mat-button [mat-dialog-close]="{ingredient: data.ingredient.name, action: false}">Fermer</button>
+</mat-dialog-actions>

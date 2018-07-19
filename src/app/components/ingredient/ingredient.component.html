@@ -1,3 +1,35 @@
-<p>
-  ingredient works!
-</p>
+<div class="my-component-container">
+  <span class="my-spacer hide-sm"></span>
+
+  <div class="my-component-content">
+    <mat-card class="my-margin-top">
+      <mat-card-header class="my-card-title">
+        <span>Ingrédients</span>
+        <span class="my-flex-spacer"></span>
+        <button mat-icon-button (click)="showNewItemInput = true">
+          <mat-icon aria-label="ajouter">add</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Ingredient list -->
+        <mat-list>
+          <mat-list-item class="my-list-item" *ngFor="let ingredient of ingredients" (click)="openEditDialog(ingredient)">
+            {{ingredient.name}}
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+
+        <!-- Input new ingredient -->
+        <form *ngIf="showNewItemInput" (ngSubmit)="createIngredient()" class="my-margin-top my-row" [formGroup]="newItemForm">
+          <mat-form-field style="flex: 1;">
+            <input matInput myAutofocus placeholder="Label" formControlName="newItem" name="newItem">
+          </mat-form-field>
+          <mat-icon aria-label="Close" class="my-pointer" (click)="showNewItemInput = false">close</mat-icon>
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <span class="my-spacer hide-sm"></span>
+</div>

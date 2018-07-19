@@ -24,7 +24,7 @@ const routes: Routes = [
   }, {
     path: 'ingredients',
     component: IngredientComponent,
-    canActivate: [AuthenticationGuard]
+    // canActivate: [AuthenticationGuard]
   }, {
     path: '',
     component: ListComponent,

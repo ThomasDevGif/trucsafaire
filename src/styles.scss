@@ -23,7 +23,7 @@ html, body {
   display: none !important;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .hide-sm {
     display: none !important;
   }
@@ -53,24 +53,48 @@ html, body {
     height: calc(100vh - 155px);
     overflow-y: auto;
   }
+
+  .my-component-content {
+    margin-top: 0px !important;
+  }
 }
 
 /* Containers */
 .my-container {
-    margin-top: 56px;
-    height: calc(100vh - 107px);
+  margin-top: 50px;
+  height: calc(100vh - 107px);
 }
 
-/* Components */
 .my-content { padding: 10px; }
 
+.my-component-container {
+  display: flex;
+  justify-content: center;
+}
+
+.my-component-content {
+  flex: 1;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.my-spacer { flex: 0.5 1 auto; }
+.my-large-spacer { flex: 1 1 auto; }
+
+/* Components */
 .my-pointer { cursor: pointer; }
 
-mat-card { border-radius: 8px !important;}
+.my-list-item { cursor: pointer; }
+.my-list-item:hover { background-color: #EEEEEE; }
+.my-item:hover { background-color: #EEEEEE; }
 
-.my-form {
+mat-card { border-radius: 8px !important; }
+
+.my-card-title {
+  color: #00ADB5;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
 }
 
 .my-card-actions { /* Override angular material */
@@ -79,7 +103,16 @@ mat-card { border-radius: 8px !important;}
   justify-content: flex-end !important;
 }
 
-.my-item:hover { background-color: #EEEEEE; }
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.my-form {
+  display: flex;
+  flex-direction: column;
+}
 
 /* Layouts */
 .my-row {

@@ -21,4 +21,5 @@ $custom-app-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $cus
 // that you are using.
 @include angular-material-theme($custom-app-theme);
 
-.primary { color: #212121; }
+.primary { color: #212121 !important; }
+.success { color: #4CAF50 !important; }

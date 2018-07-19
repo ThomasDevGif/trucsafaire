@@ -30,6 +30,7 @@ import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { IngredientComponent } from './components/ingredient/ingredient.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DialogIngredientEditComponent } from './components/ingredient/dialog-ingredient-edit/dialog-ingredient-edit.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DialogLoaderComponent,
     RecipeComponent,
     IngredientComponent,
-    NavbarComponent
+    NavbarComponent,
+    DialogIngredientEditComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   entryComponents: [
     DialogConfirmComponent,
     DialogShareComponent,
-    DialogLoaderComponent
+    DialogLoaderComponent,
+    DialogIngredientEditComponent
   ],
   bootstrap: [AppComponent]
 })
