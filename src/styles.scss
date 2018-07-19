@@ -107,6 +107,13 @@ mat-card { border-radius: 8px !important; }
   justify-content: flex-end !important;
 }
 
+.my-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-style: italic;
+}
+
 mat-dialog-actions {
   display: flex;
   justify-content: flex-end;

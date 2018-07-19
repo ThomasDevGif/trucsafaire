@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule }    from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
 import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material';
@@ -59,6 +60,7 @@ import { KitchenComponent } from './components/kitchen/kitchen.component';
     HttpModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    PickerModule,
     MatButtonModule,
     MatCheckboxModule,
     MatIconModule,

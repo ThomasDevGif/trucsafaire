@@ -1,3 +1,14 @@
-<p>
-  recipe works!
-</p>
+<div class="my-content my-scrollable-container">
+
+  <mat-card class="my-recipe-card" *ngFor="let recipe of recipes">
+    <mat-card-title>{{recipe.name}}</mat-card-title>
+    <mat-card-content>
+      
+
+      <div class="my-card-footer">
+        <br/>Ajoutée par Machin Truc
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>
