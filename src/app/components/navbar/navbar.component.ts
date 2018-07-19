@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
     },
     {
       title: 'Cuisine',
-      link: 'ingredients',
+      link: 'kitchen',
       icon: 'local_dining'
     }];
 

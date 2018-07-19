@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { DialogIngredientEditComponent } from './dialog-ingredient-edit/dialog-ingredient-edit.component';
+import { ToolbarService } from '../../services/toolbar/toolbar.service';
 import { Ingredient } from '../../models/ingredient';
 
 @Component({
@@ -26,8 +27,12 @@ export class IngredientComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toolbarService: ToolbarService
   ) {
+    this.toolbarService.setTitle('Ingredients');
+    this.toolbarService.setHasReturn(true);
+
     this.newItemCtrl = fb.control('', [ Validators.required ]);
     this.newItemForm = fb.group({
       newItem: this.newItemCtrl

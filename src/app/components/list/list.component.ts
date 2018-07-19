@@ -6,6 +6,7 @@ import { AuthentificationService } from '../../services/authentification/authent
 import { ListService } from '../../services/list/list.service';
 import { ItemService } from '../../services/item/item.service';
 import { ConverterService } from '../../utils/converter.service';
+import { ToolbarService } from '../../services/toolbar/toolbar.service';
 import { DialogConfirmComponent } from '../../components/dialog-confirm/dialog-confirm.component';
 import { DialogShareComponent } from '../../components/dialog-share/dialog-share.component';
 import { DialogLoaderComponent } from '../dialog-loader/dialog-loader.component';
@@ -50,6 +51,7 @@ export class ListComponent implements OnInit {
   deleteItemMessage:string = 'Supprimer ';
 
   constructor(
+    private toolbarService: ToolbarService,
     private authentificationService: AuthentificationService,
     private listService: ListService,
     private itemService: ItemService,
@@ -58,6 +60,9 @@ export class ListComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog
   ) {
+    this.toolbarService.setTitle('Listes');
+    this.toolbarService.setHasReturn(false);
+
     this.newItemCtrl = fb.control('', [ Validators.required ]);
     this.newItemForm = fb.group({
       newItem: this.newItemCtrl

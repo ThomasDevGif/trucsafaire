@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToolbarService } from '../../services/toolbar/toolbar.service';
 
 @Component({
   selector: 'app-recipe',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private toolbarService: ToolbarService
+  ) {
+    this.toolbarService.setTitle('Recettes');
+    this.toolbarService.setHasReturn(true);
+  }
 
   ngOnInit() {
   }

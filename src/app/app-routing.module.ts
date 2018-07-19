@@ -6,6 +6,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { LoginComponent } from  './components/login/login.component';
 import { ProfileComponent } from  './components/profile/profile.component';
 import { ListComponent } from  './components/list/list.component';
+import { KitchenComponent } from  './components/kitchen/kitchen.component';
 import { RecipeComponent } from  './components/recipe/recipe.component';
 import { IngredientComponent } from  './components/ingredient/ingredient.component';
 
@@ -18,9 +19,13 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthenticationGuard]
   }, {
+    path: 'kitchen',
+    component: KitchenComponent,
+    // canActivate: [AuthenticationGuard]
+  }, {
     path: 'recipes',
     component: RecipeComponent,
-    canActivate: [AuthenticationGuard]
+    // canActivate: [AuthenticationGuard]
   }, {
     path: 'ingredients',
     component: IngredientComponent,

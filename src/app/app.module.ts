@@ -12,6 +12,7 @@ import { MatSnackBarModule } from '@angular/material';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthentificationService } from './services/authentification/authentification.service';
+import { ToolbarService } from './services/toolbar/toolbar.service';
 import { ConverterService } from './utils/converter.service';
 import { UserService } from './services/user/user.service';
 import { ListService } from './services/list/list.service';
@@ -31,6 +32,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 import { IngredientComponent } from './components/ingredient/ingredient.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DialogIngredientEditComponent } from './components/ingredient/dialog-ingredient-edit/dialog-ingredient-edit.component';
+import { KitchenComponent } from './components/kitchen/kitchen.component';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { DialogIngredientEditComponent } from './components/ingredient/dialog-in
     RecipeComponent,
     IngredientComponent,
     NavbarComponent,
-    DialogIngredientEditComponent
+    DialogIngredientEditComponent,
+    KitchenComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import { DialogIngredientEditComponent } from './components/ingredient/dialog-in
   providers: [
     AuthenticationGuard,
     AuthentificationService,
+    ToolbarService,
     ConverterService,
     UserService,
     ListService,

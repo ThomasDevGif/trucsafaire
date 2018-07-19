@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../../services/authentification/authentification.service';
+import { ToolbarService } from '../../services/toolbar/toolbar.service';
 import { User } from '../../models/user';
 
 @Component({
@@ -14,8 +15,12 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private authentificationService: AuthentificationService,
+    private toolbarService: ToolbarService,
     private router: Router
-  ) { }
+  ) {
+    this.toolbarService.setTitle('Profil');
+    this.toolbarService.setHasReturn(false);
+  }
 
   ngOnInit() {
     this.loggedUser = this.authentificationService.getUser();

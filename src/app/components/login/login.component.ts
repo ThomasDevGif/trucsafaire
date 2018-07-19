@@ -7,6 +7,7 @@ import { PasswordValidation } from './password-validation';
 import { AuthentificationService } from '../../services/authentification/authentification.service';
 import { DialogLoaderComponent } from '../dialog-loader/dialog-loader.component';
 import { UserService } from '../../services/user/user.service';
+import { ToolbarService } from '../../services/toolbar/toolbar.service';
 import { User } from '../../models/user';
 
 @Component({
@@ -31,8 +32,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private toolbarService: ToolbarService
   ) {
+    this.toolbarService.setTitle('Trucsafaire');
+    this.toolbarService.setHasReturn(false);
 
     this.identifiantCtrl = fb.control('', [ Validators.required ]);
     this.passwordCtrl = fb.control('', [ Validators.required ]);

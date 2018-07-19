@@ -1,6 +1,13 @@
 <mat-toolbar color="primary" class="my-toolbar shadow-1">
   <mat-toolbar-row>
-    <span class="my-margin-right">Trucsafaire</span>
+
+    <button class="show-sm" *ngIf="hasReturn" mat-icon-button (click)="return()">
+      <mat-icon >arrow_back</mat-icon>
+    </button>
+
+    <span class="my-margin-right show-sm">{{title}}</span>
+    <span class="my-margin-right hide-sm">Trucsafaire</span>
+
     <div class="hide-sm">
       <button mat-button [routerLink]="['/profile']" class="my-row">
         <mat-icon>person</mat-icon>
