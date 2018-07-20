@@ -1,20 +1,19 @@
-<div class="my-content my-scrollable-container my-component-container">
+<div class="my-scrollable-container my-component-container">
   <span class="my-small-spacer hide-sm"></span>
 
   <div class="my-component-content">
-    <mat-card class="my-recipe-card" *ngFor="let recipe of recipes">
-      <mat-card-title>
-        <span [innerHTML]="getEmoji(recipe) | emojis"></span>
-        <span class="my-margin-left">{{recipe.name}}</span>
-      </mat-card-title>
+    <mat-card class="my-recipe-card" *ngFor="let recipe of recipes" (click)="openRecipeDetails(recipe)">
+      <mat-card-title>{{recipe.name}}</mat-card-title>
       <mat-card-content>
 
         <p>Ingrédients : pain, fromage, binouzes, tomate, oeufs, lait, farine, pouet</p>
-        <p class="my-row">
-          <mat-icon>access_time</mat-icon>
-          <span class="my-margin-left">{{recipe.time}}</span>
-        </p>
-
+        <div class="my-row-around">
+          <div class="my-row">
+            <mat-icon>access_time</mat-icon>
+            <span class="my-margin-left">{{recipe.time}}</span>
+          </div>
+          <div [innerHTML]="getEmoji(recipe) | emojis"></div>
+        </div>
 
         <div class="my-card-footer">
           <br/>Ajoutée par Machin Truc

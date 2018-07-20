@@ -8,6 +8,7 @@ import { ProfileComponent } from  './components/profile/profile.component';
 import { ListComponent } from  './components/list/list.component';
 import { KitchenComponent } from  './components/kitchen/kitchen.component';
 import { RecipeComponent } from  './components/recipe/recipe.component';
+import { RecipeDetailsComponent } from  './components/recipe/recipe-details/recipe-details.component';
 import { IngredientComponent } from  './components/ingredient/ingredient.component';
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
   }, {
     path: 'recipes',
     component: RecipeComponent,
+    // canActivate: [AuthenticationGuard]
+  }, {
+    path: 'recipe-details',
+    component: RecipeDetailsComponent,
     // canActivate: [AuthenticationGuard]
   }, {
     path: 'ingredients',

@@ -1,12 +1,12 @@
 <mat-toolbar color="primary" class="my-toolbar shadow-1">
   <mat-toolbar-row>
 
-    <button class="show-sm" *ngIf="hasReturn" mat-icon-button (click)="return()">
+    <button class="show-sm my-margin-rigth" *ngIf="hasReturn" mat-icon-button (click)="return()">
       <mat-icon >arrow_back</mat-icon>
     </button>
 
-    <span class="my-margin-right show-sm">{{title}}</span>
-    <span class="my-margin-right hide-sm">Trucsafaire</span>
+    <span class="my-margin-left show-sm">{{title}}</span>
+    <span class="my-margin-left hide-sm">Trucsafaire</span>
 
     <div class="hide-sm">
       <button mat-button [routerLink]="['/profile']" class="my-row">

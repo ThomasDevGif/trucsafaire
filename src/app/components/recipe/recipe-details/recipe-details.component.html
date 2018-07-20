@@ -1,0 +1,28 @@
+<div class="my-content my-component-container my-scrollable-container">
+  <span class="my-spacer hide-sm"></span>
+
+  <mat-card class="my-component-content">
+    <mat-card-title>{{recipe.name}}</mat-card-title>
+    <mat-card-content>
+
+      <div class="my-row-between">
+        <div class="my-row">
+          <mat-icon>access_time</mat-icon>
+          <span class="my-margin-left">{{recipe.time}}</span>
+        </div>
+        <div [innerHTML]="getEmoji(recipe) | emojis"></div>
+      </div>
+
+      <p>Ingrédients: chips, patate, pouet pouet</p>
+
+      <p>{{recipe.description}}</p>
+
+      <div class="my-card-footer">
+        <br/>Ajoutée par {{recipe.userId}}
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <span class="my-spacer hide-sm"></span>
+</div>

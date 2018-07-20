@@ -34,6 +34,7 @@ import { IngredientComponent } from './components/ingredient/ingredient.componen
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DialogIngredientEditComponent } from './components/ingredient/dialog-ingredient-edit/dialog-ingredient-edit.component';
 import { KitchenComponent } from './components/kitchen/kitchen.component';
+import { RecipeDetailsComponent } from './components/recipe/recipe-details/recipe-details.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { KitchenComponent } from './components/kitchen/kitchen.component';
     IngredientComponent,
     NavbarComponent,
     DialogIngredientEditComponent,
-    KitchenComponent
+    KitchenComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,

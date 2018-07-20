@@ -2,13 +2,8 @@
 $warning: #FF5722;
 
 /* Styles */
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-.emoji {
-  display:inline-block;
-}
+*, *:before, *:after { box-sizing: border-box; }
+.emoji { display:inline-block; }
 
 html, body {
   background-color: #EEEEEE;
@@ -28,13 +23,8 @@ html, body {
 }
 
 @media screen and (max-width: 800px) {
-  .hide-sm {
-    display: none !important;
-  }
-
-  .show-sm {
-    display: block !important;
-  }
+  .hide-sm { display: none !important; }
+  .show-sm { display: block !important; }
 
   .my-row-lg-col-sm {
     display: flex;
@@ -58,13 +48,8 @@ html, body {
     overflow-y: auto;
   }
 
-  .my-component-content {
-    margin-top: 0px !important;
-  }
-
-  .my-container {
-    margin-top: 55px !important;
-  }
+  .my-component-content { margin-top: 0px !important; }
+  .my-container { margin-top: 55px !important; }
 }
 
 /* Containers */
@@ -73,11 +58,12 @@ html, body {
   height: calc(100vh - 107px);
 }
 
-.my-content { padding: 10px; }
+.my-content { padding: 5px; }
 
 .my-component-container {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .my-component-content {
@@ -97,7 +83,10 @@ html, body {
 .my-list-item:hover { background-color: #EEEEEE; }
 .my-item:hover { background-color: #EEEEEE; }
 
-mat-card { border-radius: 8px !important; }
+mat-card {
+  border-radius: 8px !important;
+  padding: 10px !important;
+}
 
 .my-card-title {
   color: #00ADB5;
@@ -145,6 +134,12 @@ mat-dialog-actions {
   display: flex  !important;
   align-items: center !important;
   justify-content: space-between !important;
+}
+
+.my-row-around {
+  display: flex  !important;
+  align-items: center !important;
+  justify-content: space-around !important;
 }
 
 .my-column {
