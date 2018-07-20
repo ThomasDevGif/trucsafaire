@@ -1,0 +1,26 @@
+<div class="fab-menu-area hide">
+  <div class="fab-menu-content fab-down hide">
+    <label for="recipeCreate" class="info-tip my-fab-label shadow-2">Ajouter une recette</label>
+    <button id="recipeCreate" mat-mini-fab color="accent" class="white-text" [routerLink]="'/recipe-create'">
+      <mat-icon aria-label="Create a recipe">add</mat-icon>
+    </button>
+  </div>
+  <div class="fab-menu-content fab-middle hide">
+    <label for="Roti" class="info-tip my-fab-label shadow-2">Trier les recettes</label>
+    <button id="Roti" mat-mini-fab color="accent" class="white-text">
+      <mat-icon aria-label="Request a MeetBack">sort</mat-icon>
+    </button>
+  </div>
+  <div class="fab-menu-content fab-top hide">
+    <label for="request_fb" class="info-tip my-fab-label shadow-2">Rechercher une recette</label>
+    <button id="request_fb" mat-mini-fab color="accent" class="white-text">
+      <mat-icon aria-label="Request a feedback">search</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="fab-menu animated bounceIn" (click)="fabMenuClickListener($event)">
+  <button mat-fab class="white-text">
+    <mat-icon *ngIf="!isMenuOpen" [ngClass]="{'animated rotateIn': isEditAnimation}" aria-label="Open menu">more_vert</mat-icon>
+    <mat-icon *ngIf="isMenuOpen" class="animated rotateIn" aria-label="Open menu">close</mat-icon>
+  </button>
+</div>

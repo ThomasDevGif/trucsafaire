@@ -1,0 +1,114 @@
+.my-fab-label {
+  color: #00838f;
+}
+
+.my-fab-label-display {
+  color: #B5B5B5;
+}
+
+/* .animated {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+} */
+
+/** https://codepen.io/iodeveloper/pen/grxPNz */
+p {
+  font-size: 15px;
+}
+
+label {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.fab-menu {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 22px;
+  margin-bottom: 62px;
+  z-index: 999;
+   transition: all .300ms linear;
+  -o-transition: all .300ms linear;
+  -moz-transition: all .300ms linear;
+  -webkit-transition: all .300ms linear;
+}
+
+.fab-menu-content {
+  position: fixed;
+  right: 0;
+  bottom: 32px;
+  margin-right: 30px;
+  margin-bottom: 92px;
+  z-index: 999;
+}
+
+.hide {
+  display: none;
+}
+
+.mat-fab.mat-accent{
+  background-color: #00838f;
+}
+
+.fab-menu-content.fab-down {
+  position: fixed;
+  right: 0;
+  bottom: 30px;
+  margin-right: 30px;
+  margin-bottom: 100px;
+  z-index: 999;
+}
+
+.fab-menu-content.fab-top {
+  position: fixed;
+  right: 0;
+  bottom: 30px;
+  margin-right: 30px;
+  margin-bottom: 200px;
+  z-index: 999;
+}
+
+.fab-menu-content.fab-middle {
+  position: fixed;
+  right: 0;
+  bottom: 30px;
+  margin-right: 30px;
+  margin-bottom: 150px;
+  z-index: 999;
+}
+
+div.fab-menu-area {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(245,245,245, 0.8);
+}
+
+div.page-content {
+  padding: 40px 50px;
+}
+
+label.info-tip {
+  padding: 7px 10px;
+  margin-right: 10px;
+  border-radius: 40px;
+  font-weight: bold;
+}
+
+div.page-content h3 {
+  font-size: 26px;
+  text-transform: uppercase;
+  padding-bottom: 7px;
+  display: inline-block;
+  border-bottom: 4px solid #00838f;
+}

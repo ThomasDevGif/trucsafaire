@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolbarService } from '../../services/toolbar/toolbar.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-kitchen',
@@ -9,7 +10,8 @@ import { ToolbarService } from '../../services/toolbar/toolbar.service';
 export class KitchenComponent implements OnInit {
 
   constructor(
-    private toolbarService: ToolbarService
+    private toolbarService: ToolbarService,
+    private snackbarService: SnackbarService
   ) {
     this.toolbarService.setTitle('Cuisine');
     this.toolbarService.setRoute('/kitchen');
@@ -17,6 +19,10 @@ export class KitchenComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public openSnackbar() {
+    this.snackbarService.openSnackBar('Soon ! :p');
   }
 
 }

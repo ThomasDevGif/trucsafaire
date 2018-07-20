@@ -4,17 +4,22 @@ import { NgModule } from '@angular/core';
 import { HttpModule }    from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2EmojiModule } from 'ng2-emoji';
-import { MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatSnackBarModule,
+  MatRadioModule,
+  MatAutocompleteModule,
+  MatSelectModule
+} from '@angular/material';
 import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
 import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material';
-import { MatSelectModule } from '@angular/material';
-import { MatAutocompleteModule } from '@angular/material';
-import { MatSnackBarModule } from '@angular/material';
-import { MatRadioModule } from '@angular/material/radio';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthentificationService } from './services/authentification/authentification.service';
 import { ToolbarService } from './services/toolbar/toolbar.service';
+import { SnackbarService } from './services/snackbar/snackbar.service';
 import { ConverterService } from './utils/converter.service';
 import { UserService } from './services/user/user.service';
 import { ListService } from './services/list/list.service';
@@ -37,6 +42,7 @@ import { DialogIngredientEditComponent } from './components/ingredient/dialog-in
 import { KitchenComponent } from './components/kitchen/kitchen.component';
 import { RecipeDetailsComponent } from './components/recipe/recipe-details/recipe-details.component';
 import { RecipeCreateComponent } from './components/recipe/recipe-create/recipe-create.component';
+import { RecipeFabMenuComponent } from './components/recipe/recipe-fab-menu/recipe-fab-menu.component';
 
 
 @NgModule({
@@ -56,7 +62,8 @@ import { RecipeCreateComponent } from './components/recipe/recipe-create/recipe-
     DialogIngredientEditComponent,
     KitchenComponent,
     RecipeDetailsComponent,
-    RecipeCreateComponent
+    RecipeCreateComponent,
+    RecipeFabMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +91,7 @@ import { RecipeCreateComponent } from './components/recipe/recipe-create/recipe-
     AuthenticationGuard,
     AuthentificationService,
     ToolbarService,
+    SnackbarService,
     ConverterService,
     UserService,
     ListService,
