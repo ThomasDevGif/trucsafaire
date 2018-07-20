@@ -1,0 +1,28 @@
+.example-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.example-radio-button {
+    margin: 3px;
+}
+
+.example-selected-value {
+    margin: 15px 0;
+}
+
+.radio-emojis {
+  padding-left: 30px;
+}
+
+.inactive {
+  filter: grayscale(100%);
+}
+
+:host ::ng-deep #difficultyMark .mat-radio-container {
+  display: none !important;
+}
+
+:host ::ng-deep #difficultyMark .mat-radio-label-content {
+  padding-left: 18px;
+}

@@ -39,7 +39,7 @@ html, body {
   }
 
   .my-scrollable-container {
-    height: calc(100vh - 107px);
+    height: calc(100vh - 110px);
     overflow-y: auto;
   }
 
@@ -48,14 +48,13 @@ html, body {
     overflow-y: auto;
   }
 
-  .my-component-content { margin-top: 0px !important; }
   .my-container { margin-top: 55px !important; }
 }
 
 /* Containers */
 .my-container {
   margin-top: 65px;
-  height: calc(100vh - 107px);
+  height: calc(100vh - 110px);
 }
 
 .my-content { padding: 5px; }
@@ -68,8 +67,6 @@ html, body {
 
 .my-component-content {
   flex: 1;
-  padding: 5px;
-  margin-top: 10px;
 }
 
 .my-small-spacer { flex: 0.1 1 auto; }
@@ -163,8 +160,9 @@ mat-dialog-actions {
 .my-flex-spacer {flex: 1 1 auto; }
 
 /* Colors */
-.white-text { color: #fff; }
+.white-text { color: #fff !important; }
 .red-text { color: #F44336; }
+.grey-text { color: #757575; }
 
 .hover-warning:hover { color: $warning; }
 

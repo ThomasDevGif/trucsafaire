@@ -1,4 +1,4 @@
-<div class="my-component-container">
+<div class="my-content my-component-container my-scrollable-container">
   <span class="my-spacer hide-sm"></span>
 
   <div class="my-component-content">
@@ -11,14 +11,6 @@
         </button>
       </mat-card-header>
       <mat-card-content>
-        <!-- Ingredient list -->
-        <mat-list>
-          <mat-list-item class="my-list-item" *ngFor="let ingredient of ingredients" (click)="openEditDialog(ingredient)">
-            {{ingredient.name}}
-            <mat-divider></mat-divider>
-          </mat-list-item>
-        </mat-list>
-
         <!-- Input new ingredient -->
         <form *ngIf="showNewItemInput" (ngSubmit)="createIngredient()" class="my-margin-top my-row" [formGroup]="newItemForm">
           <mat-form-field style="flex: 1;">
@@ -27,6 +19,13 @@
           <mat-icon aria-label="Close" class="my-pointer" (click)="showNewItemInput = false">close</mat-icon>
         </form>
 
+        <!-- Ingredient list -->
+        <mat-list>
+          <mat-list-item class="my-list-item" *ngFor="let ingredient of ingredients" (click)="openEditDialog(ingredient)">
+            {{ingredient.name}}
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </div>

@@ -10,3 +10,9 @@
 .my-toolbar-icon {
   padding: 0 14px;
 }
+
+.my-toolbar-title {
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
+}

@@ -9,6 +9,7 @@ import { ListComponent } from  './components/list/list.component';
 import { KitchenComponent } from  './components/kitchen/kitchen.component';
 import { RecipeComponent } from  './components/recipe/recipe.component';
 import { RecipeDetailsComponent } from  './components/recipe/recipe-details/recipe-details.component';
+import { RecipeCreateComponent } from  './components/recipe/recipe-create/recipe-create.component';
 import { IngredientComponent } from  './components/ingredient/ingredient.component';
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   }, {
     path: 'recipe-details',
     component: RecipeDetailsComponent,
+    // canActivate: [AuthenticationGuard]
+  }, {
+    path: 'recipe-create',
+    component: RecipeCreateComponent,
     // canActivate: [AuthenticationGuard]
   }, {
     path: 'ingredients',

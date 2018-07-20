@@ -18,11 +18,11 @@ export class RecipeDetailsComponent implements OnInit {
   ) {
     this.route.queryParams.subscribe(params => {
       this.recipe = JSON.parse(params['recipe']) as Recipe;
-    });
 
-    this.toolbarService.setTitle('Recette');
-    this.toolbarService.setRoute('/recipes');
-    this.toolbarService.setHasReturn(true);
+      this.toolbarService.setTitle(this.recipe.name);
+      this.toolbarService.setRoute('/recipes');
+      this.toolbarService.setHasReturn(true);
+    });
   }
 
   ngOnInit() {

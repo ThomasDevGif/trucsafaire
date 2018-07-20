@@ -1,3 +1,9 @@
+mat-card-title {
+  color: #00adb5;
+  display: flex;
+  align-items: center;
+}
+
 .my-recipe-card {
   margin-bottom: 5px;
   transition: all .2s ease-in-out;
@@ -7,4 +13,21 @@
   cursor: pointer;
   background-color: #F5F5F5;
   transform: scale(1.01);
+}
+
+.fab-position {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-right: 22px;
+  margin-bottom: 12px;
+  z-index: 999;
+  background-color: #00838f;
+}
+
+@media screen and (max-width: 800px) {
+  .fab-position {
+    margin-bottom: 62px;
+  }
+
 }

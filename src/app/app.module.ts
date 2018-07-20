@@ -10,6 +10,7 @@ import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material
 import { MatSelectModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthentificationService } from './services/authentification/authentification.service';
@@ -35,6 +36,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DialogIngredientEditComponent } from './components/ingredient/dialog-ingredient-edit/dialog-ingredient-edit.component';
 import { KitchenComponent } from './components/kitchen/kitchen.component';
 import { RecipeDetailsComponent } from './components/recipe/recipe-details/recipe-details.component';
+import { RecipeCreateComponent } from './components/recipe/recipe-create/recipe-create.component';
 
 
 @NgModule({
@@ -53,7 +55,8 @@ import { RecipeDetailsComponent } from './components/recipe/recipe-details/recip
     NavbarComponent,
     DialogIngredientEditComponent,
     KitchenComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    RecipeCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import { RecipeDetailsComponent } from './components/recipe/recipe-details/recip
     MatSnackBarModule,
     MatAutocompleteModule,
     MatSelectModule,
+    MatRadioModule,
     Ng2EmojiModule.forRoot(),
   ],
   providers: [
