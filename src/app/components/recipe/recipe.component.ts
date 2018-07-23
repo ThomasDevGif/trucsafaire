@@ -18,6 +18,7 @@ export class RecipeComponent implements OnInit {
     {id: 3, name: 'Recette 3', difficulty: 2, date: '01/01/2018', time: 40, userId: 1, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
     {id: 4, name: 'Recette 4 recette recette recette recette', difficulty: 3, date: '01/01/2018', time: 60, userId: 1, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
   ]
+  public searchRecipeValue: string;
 
   constructor(
     private router: Router,
@@ -67,8 +68,12 @@ export class RecipeComponent implements OnInit {
 
   public openDialogSearch() {
     var dialogRef = this.dialog.open(RecipeDialogSearchComponent);
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('closed');
+    dialogRef.afterClosed().subscribe((res) => {
+      if (!res) return;
+
+      if (res.search) {
+        this.searchRecipeValue = res.value;
+      }
     })
   }
 

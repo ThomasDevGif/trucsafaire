@@ -2,14 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 60px;
 }
 
 .my-login-content {
-  margin: 50px;
+  margin: 0px 20px;
   flex: 1;
 }
-
-mat-card { padding: 10px !important; }
 
 .my-login-header {
   color: #fff;
@@ -38,11 +37,12 @@ mat-card { padding: 10px !important; }
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding-top: 0px;
   }
 
   .my-login-content {
-    width: 90%;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    width: 95%;
+    flex: 0;
+    margin-top: 10px;
   }
 }

@@ -2,13 +2,13 @@
 <mat-dialog-content>
   <form class="my-form">
     <mat-form-field>
-    <input matInput placeholder="Recette">
-  </mat-form-field>
+      <input matInput placeholder="Recette" [(ngModel)]="inputSearch" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Fermer</button>
-  <button mat-button [mat-dialog-close]="true" class="my-row">
+  <button mat-button [mat-dialog-close]="{search: false}">Fermer</button>
+  <button mat-button [mat-dialog-close]="{search: true, value: inputSearch}" class="my-row">
     <mat-icon>search</mat-icon>
     <span>Rechercher</span>
   </button>

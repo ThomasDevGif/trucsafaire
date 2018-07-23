@@ -2,11 +2,10 @@
   <span class="my-small-spacer hide-sm"></span>
 
   <div class="my-component-content">
-    <mat-card class="my-recipe-card" *ngFor="let recipe of recipes" (click)="openRecipeDetails(recipe)">
+    <mat-card class="my-recipe-card" *ngFor="let recipe of recipes | searchRecipe:searchRecipeValue" (click)="openRecipeDetails(recipe)">
       <mat-card-title>{{recipe.name}}</mat-card-title>
       <mat-card-content>
 
-        <p>Ingrédients : pain, fromage, binouzes, tomate, oeufs, lait, farine, pouet</p>
         <div class="my-row-around">
           <div class="my-row">
             <mat-icon>access_time</mat-icon>

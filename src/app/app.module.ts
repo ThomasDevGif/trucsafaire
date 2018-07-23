@@ -45,6 +45,7 @@ import { RecipeCreateComponent } from './components/recipe/recipe-create/recipe-
 import { RecipeFabMenuComponent } from './components/recipe/recipe-fab-menu/recipe-fab-menu.component';
 import { RecipeFilterComponent } from './components/recipe/recipe-filter/recipe-filter.component';
 import { RecipeDialogSearchComponent } from './components/recipe/recipe-dialog-search/recipe-dialog-search.component';
+import { SearchRecipePipe } from './pipes/search-recipe.pipe';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { RecipeDialogSearchComponent } from './components/recipe/recipe-dialog-s
     RecipeCreateComponent,
     RecipeFabMenuComponent,
     RecipeFilterComponent,
-    RecipeDialogSearchComponent
+    RecipeDialogSearchComponent,
+    SearchRecipePipe
   ],
   imports: [
     BrowserModule,

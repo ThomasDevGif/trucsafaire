@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeDialogSearchComponent implements OnInit {
 
+  public inputSearch: string;
+
   constructor() { }
 
   ngOnInit() {

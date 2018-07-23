@@ -5,6 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 import { ToolbarService } from '../../../services/toolbar/toolbar.service';
 import { Recipe } from '../../../models/recipe';
 import { Ingredient } from '../../../models/ingredient';
+import { RecipeIngredient } from '../../../models/recipeIngredient';
 
 @Component({
   selector: 'app-recipe-create',
