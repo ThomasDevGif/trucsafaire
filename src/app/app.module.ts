@@ -11,7 +11,7 @@ import {
   MatSnackBarModule,
   MatRadioModule,
   MatAutocompleteModule,
-  MatSelectModule
+  MatSelectModule,
 } from '@angular/material';
 import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
 import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material';
@@ -43,6 +43,8 @@ import { KitchenComponent } from './components/kitchen/kitchen.component';
 import { RecipeDetailsComponent } from './components/recipe/recipe-details/recipe-details.component';
 import { RecipeCreateComponent } from './components/recipe/recipe-create/recipe-create.component';
 import { RecipeFabMenuComponent } from './components/recipe/recipe-fab-menu/recipe-fab-menu.component';
+import { RecipeFilterComponent } from './components/recipe/recipe-filter/recipe-filter.component';
+import { RecipeDialogSearchComponent } from './components/recipe/recipe-dialog-search/recipe-dialog-search.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { RecipeFabMenuComponent } from './components/recipe/recipe-fab-menu/reci
     KitchenComponent,
     RecipeDetailsComponent,
     RecipeCreateComponent,
-    RecipeFabMenuComponent
+    RecipeFabMenuComponent,
+    RecipeFilterComponent,
+    RecipeDialogSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +105,8 @@ import { RecipeFabMenuComponent } from './components/recipe/recipe-fab-menu/reci
     DialogConfirmComponent,
     DialogShareComponent,
     DialogLoaderComponent,
-    DialogIngredientEditComponent
+    DialogIngredientEditComponent,
+    RecipeDialogSearchComponent
   ],
   bootstrap: [AppComponent]
 })

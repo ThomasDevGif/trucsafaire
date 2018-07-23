@@ -96,6 +96,11 @@ mat-card {
   display: flex !important;
   align-items: center !important;
   justify-content: flex-end !important;
+  padding-left: 5px;
+}
+
+.my-card-actions > button {
+  margin-left: 5px;
 }
 
 .my-card-footer {

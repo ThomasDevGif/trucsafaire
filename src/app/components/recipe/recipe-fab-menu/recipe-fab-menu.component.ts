@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 declare var $: any;
 
@@ -9,6 +9,8 @@ declare var $: any;
 })
 export class RecipeFabMenuComponent implements OnInit {
 
+  @Output() onSearch: EventEmitter<any> = new EventEmitter();
+
   public isMenuOpen = false;
   public isEditAnimation = false;
 
@@ -17,10 +19,16 @@ export class RecipeFabMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  /** Open popup  */
+  public openDialogSearch() {
+    this.onSearch.emit();
+    this.closeMenu();
+  }
+
   /**
    * Add toggle animation
    */
-  animate(x, field) {
+  public animate(x, field) {
     $(field).addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
       $(field).removeClass(x + ' animated');
     });
@@ -29,7 +37,7 @@ export class RecipeFabMenuComponent implements OnInit {
   /**
    * Toggle fabs
    */
-  fabMenuClickListener($event) {
+  public fabMenuClickListener($event) {
     if (!this.isMenuOpen) {
       this.openMenu($event);
     } else {
@@ -40,7 +48,7 @@ export class RecipeFabMenuComponent implements OnInit {
   /**
    * Open with animation the 3 fabs mini
    */
-  openMenu(e) {
+  public openMenu(e) {
       const self = this;
     e.preventDefault();
     $('.fab-menu-area').delay(40).fadeIn();
@@ -58,7 +66,7 @@ export class RecipeFabMenuComponent implements OnInit {
   /**
    * Hide the 3 fabs mini
    */
-  closeMenu() {
+  public closeMenu() {
     $('#icon-edit').addClass('animated rotateIn');
     $('.fab-menu-area').delay(100).fadeOut();
     $('label').delay(50).fadeOut();

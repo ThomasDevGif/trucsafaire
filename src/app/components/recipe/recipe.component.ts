@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { ToolbarService } from '../../services/toolbar/toolbar.service';
+import { RecipeDialogSearchComponent } from './recipe-dialog-search/recipe-dialog-search.component';
 import { Recipe } from '../../models/recipe';
 
 @Component({
@@ -19,7 +21,8 @@ export class RecipeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private toolbarService: ToolbarService
+    private toolbarService: ToolbarService,
+    private dialog: MatDialog
   ) {
     this.toolbarService.setTitle('Recettes');
     this.toolbarService.setRoute('/kitchen');
@@ -52,7 +55,7 @@ export class RecipeComponent implements OnInit {
   }
 
   /** Open a recipe on click */
-  openRecipeDetails(recipe: Recipe) {
+  public openRecipeDetails(recipe: Recipe) {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         // Send json to prevent bug with recipe subobjects
@@ -60,6 +63,13 @@ export class RecipeComponent implements OnInit {
       }
     };
     this.router.navigate(['recipe-details'], navigationExtras);
+  }
+
+  public openDialogSearch() {
+    var dialogRef = this.dialog.open(RecipeDialogSearchComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('closed');
+    })
   }
 
 

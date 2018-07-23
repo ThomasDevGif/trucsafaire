@@ -42,9 +42,33 @@
         <mat-form-field>
           <input matInput type="number" placeholder="Temps" formControlName="recipeTime" name="recipeTime">
         </mat-form-field>
+
+        <div class="my-row">
+          <mat-form-field class="my-margin-top" style="flex: 1;">
+            <input type="text" placeholder="Ajouter des ingrédients" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let ingredient of filteredIngredients | async" [value]="ingredient">
+                {{ ingredient.name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button mat-mini-fab color="primary" (click)="addSelectedIngredient()">
+            <mat-icon aria-label="Add">add</mat-icon>
+          </button>
+        </div>
+
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let selectedIngredient of selectedIngredients" class="my-full-width my-row">
+            <span style="flex: 1;">{{selectedIngredient.name}}</span>
+            <button mat-icon-button (click)="removeSelectedIngredient(selectedIngredient)" class="grey-text">
+              <mat-icon aria-label="Remove">close</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
       </form>
 
       <div class="my-card-actions">
+        <button mat-raised-button color="primary" class="hide-sm white-text" [routerLink]="['/recipes']">Retour</button>
         <button mat-raised-button [disabled]="recipeForm.invalid" color="accent" class="white-text" (click)="createRecipe()">Ajouter</button>
       </div>
 
