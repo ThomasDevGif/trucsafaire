@@ -25,16 +25,16 @@
         <div class="radio-emojis">
           <mat-radio-group id="difficultyMark" formControlName="recipeDifficulty" name="recipeDifficulty">
             <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 1}" color="primary" [value]="1">
-              <div [innerHTML]="':rage:' | emojis"></div>
-            </mat-radio-button>
-            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 2}" color="primary" [value]="2">
               <div [innerHTML]="':grimacing:' | emojis"></div>
             </mat-radio-button>
+            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 2}" color="primary" [value]="2">
+              <div [innerHTML]="':neutral_face:' | emojis"></div>
+            </mat-radio-button>
             <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 3}" color="primary" [value]="3">
-              <div [innerHTML]="':grinning:' | emojis"></div>
+              <div [innerHTML]="':blush:' | emojis"></div>
             </mat-radio-button>
             <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 4}" color="primary" [value]="4">
-              <div [innerHTML]="':satisfied:' | emojis"></div>
+              <div [innerHTML]="':yum:' | emojis"></div>
             </mat-radio-button>
           </mat-radio-group>
         </div>

@@ -186,14 +186,16 @@ export class ListComponent implements OnInit {
 checkItem(item:Item) {
   let self = this;
 
-  if (null == self.dialogRef) {
-    self.dialogRef = self.dialog.open(DialogLoaderComponent);
-  }
+  // TODO: simple loader in selected item, do not refresh everything
+
+  // if (null == self.dialogRef) {
+  //   self.dialogRef = self.dialog.open(DialogLoaderComponent);
+  // }
 
   item.done = !item.done;
   self.itemService.updateItem(item).then(function(res) {
-    self.dialogRef.close();
-    self.dialogRef = null;
+    // self.dialogRef.close();
+    // self.dialogRef = null;
   });
 }
 
