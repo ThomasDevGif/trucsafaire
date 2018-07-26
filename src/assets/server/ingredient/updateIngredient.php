@@ -20,6 +20,6 @@ $stmt->bindParam(':name', $name);
 if($stmt->execute()){
   http_response_code(200);
 } else {
-  http_response_code(404);
+  http_response_code(500);
 }
 ?>

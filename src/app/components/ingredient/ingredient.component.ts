@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { DialogIngredientEditComponent } from './dialog-ingredient-edit/dialog-ingredient-edit.component';
+import { DialogLoaderComponent } from '../dialog-loader/dialog-loader.component';
 import { ToolbarService } from '../../services/toolbar/toolbar.service';
+import { IngredientService } from '../../services/ingredient/ingredient.service';
 import { Ingredient } from '../../models/ingredient';
 
 @Component({
@@ -14,11 +16,12 @@ export class IngredientComponent implements OnInit {
 
   private dialogRef: any = null;
 
-  public ingredients: Ingredient[] = [
-    { id: 1, name: 'Ingrédient 1' },
-    { id: 2, name: 'Ingrédient 2' },
-    { id: 3, name: 'Ingrédient 3' }
-  ];
+  public ingredients: Ingredient[] = [];
+  // = [
+  //   { id: 1, name: 'Ingrédient 1' },
+  //   { id: 2, name: 'Ingrédient 2' },
+  //   { id: 3, name: 'Ingrédient 3' }
+  // ];
 
   // New item
   public showNewItemInput: boolean = false;
@@ -28,7 +31,8 @@ export class IngredientComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private toolbarService: ToolbarService
+    private toolbarService: ToolbarService,
+    private ingredientService: IngredientService
   ) {
     this.toolbarService.setTitle('Ingredients');
     this.toolbarService.setHasReturn(true);
@@ -40,22 +44,46 @@ export class IngredientComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refreshIngredients();
   }
 
-  // TODO
+  /** Refresh ingredients list from server */
   private refreshIngredients() {
+    if (null == this.dialogRef) {
+      this.dialogRef = this.dialog.open(DialogLoaderComponent);
+    }
 
+    this.ingredientService.getIngredients()
+    .then((resIngredients) => {
+      this.ingredients = resIngredients;
+      this.dialogRef.close();
+      this.dialogRef = null;
+    })
   }
 
-  // TODO
+  /** Insert ingredient in database */
   public createIngredient() {
-    this.ingredients.push({id: null, name: this.newItemCtrl.value});
-    this.newItemCtrl.setValue('');
+    if (null == this.dialogRef) {
+      this.dialogRef = this.dialog.open(DialogLoaderComponent);
+    }
+
+    this.ingredientService.createIngredient({id: null, name: this.newItemCtrl.value})
+    .then((res) => {
+      this.ingredients.push({id: null, name: this.newItemCtrl.value});
+      this.newItemCtrl.setValue('');
+      this.dialogRef.close();
+      this.dialogRef = null;
+    })
   }
 
-  // TODO
+  /** Delete ingredient in database */
   private removeIngredient(ingredient: Ingredient) {
-    this.ingredients.splice(this.ingredients.indexOf(ingredient), 1);
+    this.dialogRef = this.dialog.open(DialogLoaderComponent);
+
+    this.ingredientService.deleteIngredient(ingredient)
+    .then((res) => {
+      this.refreshIngredients();
+    })
   }
 
   /** Open modal to edit or delete ingredient */
@@ -69,7 +97,7 @@ export class IngredientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(function(res) {
       if (res.action) {
-        self.removeIngredient(res.ingredient);
+        self.removeIngredient(ingredient);
       }
     });
   }
