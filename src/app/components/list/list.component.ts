@@ -26,7 +26,10 @@ declare var $ :any;
 })
 export class ListComponent implements OnInit {
 
-  dialogRef: any = null;
+  public dialogRef: any = null;
+  public hideToDo: boolean = false;
+  public hideDone: boolean = false;
+
   inputSelectedList = new FormControl();
   lists: List[];
   sharedLists: List[];

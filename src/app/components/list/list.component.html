@@ -2,6 +2,7 @@
   <span class="my-spacer hide-sm"></span>
 
   <div class="my-list-container">
+    <!-- Manage list on mobile -->
     <mat-card class="my-full-width show-sm">
       <mat-card-content class="my-column">
         <div class="my-row">
@@ -31,6 +32,7 @@
       </mat-card-content>
     </mat-card>
 
+    <!-- Manage list on pc -->
     <mat-card class="my-lists hide-sm">
       <mat-card-header class="my-card-title">
         <span>Listes</span>
@@ -62,6 +64,7 @@
       </mat-card-content>
     </mat-card>
 
+    <!-- Selected list items -->
     <mat-card class="my-list">
       <mat-card-header class="my-card-title">
         <span>{{selectedList.name}}</span>
@@ -91,8 +94,12 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list>
-          <h3 mat-subheader>A faire <span class="badge my-margin-left">{{filterItems(false).length}}</span></h3>
-          <mat-list-item *ngFor="let item of filterItems(false)" class="my-item my-margin-bottom">
+          <h3 mat-subheader (click)="hideToDo = !hideToDo" class="my-pointer my-row">
+            <mat-icon *ngIf="!hideToDo">expand_less</mat-icon>
+            <mat-icon *ngIf="hideToDo">expand_more</mat-icon>
+            A faire <span class="badge my-margin-left">{{filterItems(false).length}}</span>
+          </h3>
+          <mat-list-item *ngFor="let item of filterItems(false)" class="my-item my-margin-bottom" [ngClass]="{'hide': hideToDo}">
             <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box_outline_blank</mat-icon>
             <h4 mat-line class="my-row-between">
               <span>{{item.name}}</span>
@@ -101,17 +108,23 @@
               </button>
             </h4>
           </mat-list-item>
+        </mat-list>
 
-          <form *ngIf="showNewItemInput" (ngSubmit)="addItem()" class="my-row" [formGroup]="newItemForm">
-            <mat-form-field style="flex: 1;">
-              <input matInput myAutofocus placeholder="Label" formControlName="newItem" name="newItem">
-            </mat-form-field>
-            <mat-icon aria-label="Close" class="my-pointer" (click)="toggleNewItemInput(false)">close</mat-icon>
-          </form>
+        <form *ngIf="showNewItemInput" (ngSubmit)="addItem()" class="my-row" [formGroup]="newItemForm">
+          <mat-form-field style="flex: 1;">
+            <input matInput myAutofocus placeholder="Label" formControlName="newItem" name="newItem">
+          </mat-form-field>
+          <mat-icon aria-label="Close" class="my-pointer" (click)="toggleNewItemInput(false)">close</mat-icon>
+        </form>
 
+        <mat-list>
           <mat-divider class="my-margin-top"></mat-divider>
-          <h3 mat-subheader>Faits <span class="badge my-margin-left">{{filterItems(true).length}}</span></h3>
-          <mat-list-item *ngFor="let item of filterItems(true)" class="my-item">
+          <h3 mat-subheader (click)="hideDone = !hideDone" class="my-pointer my-row">
+            <mat-icon *ngIf="!hideDone">expand_less</mat-icon>
+            <mat-icon *ngIf="hideDone">expand_more</mat-icon>
+            Faits <span class="badge my-margin-left">{{filterItems(true).length}}</span>
+          </h3>
+          <mat-list-item *ngFor="let item of filterItems(true)" class="my-item" [ngClass]="{'hide': hideDone}">
             <mat-icon mat-list-icon class="my-pointer" (click)="checkItem(item)">check_box</mat-icon>
             <h4 mat-line class="my-row-between">
               <span>{{item.name}}</span>
