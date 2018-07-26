@@ -1,4 +1,4 @@
-<div class="my-content my-scrollable-container my-component-container">
+<div *ngIf="dialogRef == null" class="my-content my-scrollable-container my-component-container">
   <span class="my-small-spacer hide-sm"></span>
 
   <div class="my-component-content">
@@ -11,7 +11,10 @@
             <mat-icon>access_time</mat-icon>
             <span class="my-margin-left">{{recipe.time}}</span>
           </div>
-          <div [innerHTML]="getEmoji(recipe) | emojis"></div>
+          <div *ngIf="recipe.difficulty == 1" [innerHTML]="':yum:' | emojis"></div>
+          <div *ngIf="recipe.difficulty == 2" [innerHTML]="':blush:' | emojis"></div>
+          <div *ngIf="recipe.difficulty == 3" [innerHTML]="':neutral_face:' | emojis"></div>
+          <div *ngIf="recipe.difficulty == 4" [innerHTML]="':grimacing:' | emojis"></div>
         </div>
 
         <div class="my-card-footer">

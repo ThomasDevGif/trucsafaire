@@ -14,7 +14,7 @@ import { Ingredient } from '../../models/ingredient';
 })
 export class IngredientComponent implements OnInit {
 
-  private dialogRef: any = null;
+  public dialogRef: any = null;
 
   public ingredients: Ingredient[] = [];
   // = [

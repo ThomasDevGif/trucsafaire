@@ -25,6 +25,7 @@ import { UserService } from './services/user/user.service';
 import { ListService } from './services/list/list.service';
 import { ItemService } from './services/item/item.service';
 import { IngredientService } from './services/ingredient/ingredient.service';
+import { RecipeService } from './services/recipe/recipe.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AutofocusDirective } from './directives/autofocus.directive';
@@ -103,7 +104,8 @@ import { SearchRecipePipe } from './pipes/search-recipe.pipe';
     UserService,
     ListService,
     ItemService,
-    IngredientService
+    IngredientService,
+    RecipeService
   ],
   entryComponents: [
     DialogConfirmComponent,
