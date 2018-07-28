@@ -93,6 +93,13 @@
         </mat-menu>
       </mat-card-header>
       <mat-card-content>
+        <form *ngIf="showNewItemInput" (ngSubmit)="addItem()" class="my-row" [formGroup]="newItemForm">
+          <mat-form-field style="flex: 1;">
+            <input matInput myAutofocus placeholder="Label" formControlName="newItem" name="newItem">
+          </mat-form-field>
+          <mat-icon aria-label="Close" class="my-pointer" (click)="toggleNewItemInput(false)">close</mat-icon>
+        </form>
+        
         <mat-list>
           <h3 mat-subheader (click)="hideToDo = !hideToDo" class="my-pointer my-row">
             <mat-icon *ngIf="!hideToDo">expand_less</mat-icon>
@@ -109,13 +116,6 @@
             </h4>
           </mat-list-item>
         </mat-list>
-
-        <form *ngIf="showNewItemInput" (ngSubmit)="addItem()" class="my-row" [formGroup]="newItemForm">
-          <mat-form-field style="flex: 1;">
-            <input matInput myAutofocus placeholder="Label" formControlName="newItem" name="newItem">
-          </mat-form-field>
-          <mat-icon aria-label="Close" class="my-pointer" (click)="toggleNewItemInput(false)">close</mat-icon>
-        </form>
 
         <mat-list>
           <mat-divider class="my-margin-top"></mat-divider>

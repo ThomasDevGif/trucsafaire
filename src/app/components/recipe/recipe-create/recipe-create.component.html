@@ -24,16 +24,16 @@
         <p class="grey-text">Difficulté</p>
         <div class="radio-emojis">
           <mat-radio-group id="difficultyMark" formControlName="recipeDifficulty" name="recipeDifficulty">
-            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 1}" color="primary" [value]="1">
+            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 4}" color="primary" [value]="4">
               <div [innerHTML]="':grimacing:' | emojis"></div>
             </mat-radio-button>
-            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 2}" color="primary" [value]="2">
+            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 3}" color="primary" [value]="3">
               <div [innerHTML]="':neutral_face:' | emojis"></div>
             </mat-radio-button>
-            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 3}" color="primary" [value]="3">
+            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 2}" color="primary" [value]="2">
               <div [innerHTML]="':blush:' | emojis"></div>
             </mat-radio-button>
-            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 4}" color="primary" [value]="4">
+            <mat-radio-button class="example-radio-button" [ngClass]="{'inactive':recipeDifficultyCtrl.value !== 1}" color="primary" [value]="1">
               <div [innerHTML]="':yum:' | emojis"></div>
             </mat-radio-button>
           </mat-radio-group>
@@ -68,8 +68,8 @@
       </form>
 
       <div class="my-card-actions">
-        <button mat-raised-button color="primary" class="hide-sm white-text" [routerLink]="['/recipes']">Retour</button>
-        <button mat-raised-button [disabled]="recipeForm.invalid" color="accent" class="white-text" (click)="createRecipe()">Ajouter</button>
+        <button mat-raised-button color="primary" class="hide-sm white-text btn-round" [routerLink]="['/recipes']">Retour</button>
+        <button mat-raised-button [disabled]="recipeForm.invalid" color="accent" class="white-text btn-round" (click)="createRecipe()">Ajouter</button>
       </div>
 
     </mat-card-content>

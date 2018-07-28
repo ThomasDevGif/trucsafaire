@@ -11,6 +11,7 @@ import { Recipe } from '../../../models/recipe';
 export class RecipeDetailsComponent implements OnInit {
 
   public recipe: Recipe;
+  public username: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,6 +19,7 @@ export class RecipeDetailsComponent implements OnInit {
   ) {
     this.route.queryParams.subscribe(params => {
       this.recipe = JSON.parse(params['recipe']) as Recipe;
+      this.username = params['username'] as string;
 
       this.toolbarService.setTitle(this.recipe.name);
       this.toolbarService.setRoute('/recipes');

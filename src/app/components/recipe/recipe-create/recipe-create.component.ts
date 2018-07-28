@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { DialogLoaderComponent } from '../../dialog-loader/dialog-loader.component';
 import { ToolbarService } from '../../../services/toolbar/toolbar.service';
+import { RecipeService } from '../../../services/recipe/recipe.service';
+import { AuthentificationService } from '../../../services/authentification/authentification.service';
 import { Recipe } from '../../../models/recipe';
 import { Ingredient } from '../../../models/ingredient';
 import { RecipeIngredient } from '../../../models/recipeIngredient';
+import { User } from '../../../models/user';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-recipe-create',
@@ -13,6 +21,9 @@ import { RecipeIngredient } from '../../../models/recipeIngredient';
   styleUrls: ['./recipe-create.component.scss']
 })
 export class RecipeCreateComponent implements OnInit {
+
+  public dialogRef: any = null;
+  private loggedUser: User;
 
   public recipeForm: FormGroup;
   public recipeNameCtrl: FormControl;
@@ -29,7 +40,11 @@ export class RecipeCreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private toolbarService: ToolbarService
+    private toolbarService: ToolbarService,
+    private recipeService: RecipeService,
+    private authentificationService: AuthentificationService,
+    private dialog: MatDialog,
+    private router: Router,
   ) {
     this.toolbarService.setTitle('Ajouter une recette');
     this.toolbarService.setRoute('/recipes');
@@ -49,6 +64,7 @@ export class RecipeCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loggedUser = this.authentificationService.getUser();
     this.getIngredients();
 
     // Init filter for autocomplete input
@@ -60,7 +76,7 @@ export class RecipeCreateComponent implements OnInit {
       );
   }
 
-  // Autocomplete ingredients using name
+  /** Autocomplete ingredients using name */
   private filter(name: string): Ingredient[] {
     let ingredients = this.ingredients.filter(ingredient =>
       ingredient.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
@@ -68,13 +84,31 @@ export class RecipeCreateComponent implements OnInit {
     return ingredients;
   }
 
-  // Function do display values in autocomplete input
+  /** Function do display values in autocomplete input */
   displayFn(ingredient?: Ingredient): string | undefined {
     return ingredient ? ingredient.name : undefined;
   }
 
+  /** Inser recipe in database */
   public createRecipe() {
-    console.log('create recipe');
+    this.dialogRef = this.dialog.open(DialogLoaderComponent);
+
+    var recipe: Recipe = {
+      id: null,
+      name: this.recipeNameCtrl.value,
+      description: this.recipeDescriptionCtrl.value,
+      difficulty: this.recipeDifficultyCtrl.value,
+      time: this.recipeTimeCtrl.value,
+      date: moment().format("DD/MM/YYYY"),
+      userId: this.loggedUser.id
+    };
+
+    this.recipeService.createRecipe(recipe)
+    .then(() => {
+      this.dialogRef.close();
+      this.dialogRef = null;
+      this.router.navigate(['/recipes']);
+    });
   }
 
   public getIngredients() {

@@ -33,6 +33,7 @@ CREATE TABLE recipe
   name VARCHAR(25) NOT NULL,
   description VARCHAR(500) NOT NULL,
   difficulty INTEGER NOT NULL,
+  time INTEGER NOT NULL,
   date VARCHAR(10) NOT NULL,
   userId INTEGER NOT NULL
 );

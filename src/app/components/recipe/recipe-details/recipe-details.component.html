@@ -11,21 +11,25 @@
             <mat-icon>access_time</mat-icon>
             <span class="my-margin-left">{{recipe.time}}</span>
           </div>
-          <div [innerHTML]="getEmoji(recipe) | emojis"></div>
+          <div *ngIf="recipe.difficulty == 1" [innerHTML]="':yum:' | emojis"></div>
+          <div *ngIf="recipe.difficulty == 2" [innerHTML]="':blush:' | emojis"></div>
+          <div *ngIf="recipe.difficulty == 3" [innerHTML]="':neutral_face:' | emojis"></div>
+          <div *ngIf="recipe.difficulty == 4" [innerHTML]="':grimacing:' | emojis"></div>
         </div>
 
         <p>Ingrédients: chips, patate, pouet pouet</p>
 
         <p>{{recipe.description}}</p>
 
+        <br/>
         <div class="my-card-footer">
-          <br/>Ajoutée par {{recipe.userId}}
+          <p>Ajoutée par <span class="strong">{{username}}</span></p>
         </div>
 
       </mat-card-content>
     </mat-card>
     <div class="my-card-actions my-margin-top">
-      <button mat-raised-button color="primary" class="hide-sm white-text" [routerLink]="['/recipes']">Retour</button>
+      <button mat-raised-button color="primary" class="hide-sm white-text btn-round" [routerLink]="['/recipes']">Retour</button>
     </div>
   </div>
 

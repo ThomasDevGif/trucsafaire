@@ -17,6 +17,8 @@ html, body {
   font-smoothing: antialiased;
 }
 
+.strong { font-weight: bold; }
+
 /* Responsive */
 .show-sm {
   display: none !important;
@@ -170,6 +172,7 @@ mat-dialog-actions {
 .white-text { color: #fff !important; }
 .red-text { color: #F44336; }
 .grey-text { color: #757575; }
+.black-text { color: #000; }
 
 .hover-warning:hover { color: $warning; }
 
