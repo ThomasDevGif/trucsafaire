@@ -12,9 +12,13 @@ import {
   MatRadioModule,
   MatAutocompleteModule,
   MatSelectModule,
+  MatToolbarModule,
+  MatCardModule,
+  MatInputModule,
+  MatMenuModule,
+  MatListModule,
+  MatDialogModule,
 } from '@angular/material';
-import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
-import { MatMenuModule, MatListModule, MatDialogModule } from '@angular/material';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthentificationService } from './services/authentification/authentification.service';

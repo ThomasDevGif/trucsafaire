@@ -6,6 +6,7 @@ import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogLoaderComponent } from '../../dialog-loader/dialog-loader.component';
 import { ToolbarService } from '../../../services/toolbar/toolbar.service';
+import { SnackbarService } from '../../../services/snackbar/snackbar.service';
 import { RecipeService } from '../../../services/recipe/recipe.service';
 import { AuthentificationService } from '../../../services/authentification/authentification.service';
 import { Recipe } from '../../../models/recipe';
@@ -41,6 +42,7 @@ export class RecipeCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private toolbarService: ToolbarService,
+    private snackbarService: SnackbarService,
     private recipeService: RecipeService,
     private authentificationService: AuthentificationService,
     private dialog: MatDialog,
@@ -107,6 +109,7 @@ export class RecipeCreateComponent implements OnInit {
     .then(() => {
       this.dialogRef.close();
       this.dialogRef = null;
+      this.snackbarService.openSnackBar('\u2714 La recette a bien été ajoutée');
       this.router.navigate(['/recipes']);
     });
   }

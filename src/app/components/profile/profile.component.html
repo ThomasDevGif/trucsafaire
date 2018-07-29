@@ -15,9 +15,23 @@
       </mat-card-header>
     </mat-card>
 
-    <mat-card style="margin-top: 20px;">
+      <mat-card style="margin-top: 20px;">
       <mat-card-content>
-        ...
+        <p class="grey-text">Changer son mot de passe</p>
+        <form [formGroup]="userForm" class="my-form">
+          <div class="my-row">
+            <mat-form-field style="flex: 1;">
+              <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Mot de passe" formControlName="userPassword" name="userPassword">
+            </mat-form-field>
+            <button mat-icon-button (click)="showPassword = !showPassword">
+              <mat-icon *ngIf="!showPassword">visibility</mat-icon>
+              <mat-icon *ngIf="showPassword">visibility_off</mat-icon>
+            </button>
+          </div>
+        </form>
+        <div class="my-card-actions">
+          <button mat-raised-button color="accent" class="white-text btn-round" (click)="updateUser()">Valider</button>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

@@ -23,9 +23,17 @@
 
 .my-list {
   width: 75%;
-  max-height: 100%;
-  overflow-y: scroll;
   margin-bottom: 5px;
+}
+
+.my-list-content {
+  height: 900px;
+  overflow-y: scroll;
+}
+
+.mat-card .mat-divider {
+  position: relative;
+  width: 100%;
 }
 
 @media screen and (max-width: 700px) {

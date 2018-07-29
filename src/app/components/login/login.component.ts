@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { PasswordValidation } from './password-validation';
 import { AuthentificationService } from '../../services/authentification/authentification.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 import { DialogLoaderComponent } from '../dialog-loader/dialog-loader.component';
 import { UserService } from '../../services/user/user.service';
 import { ToolbarService } from '../../services/toolbar/toolbar.service';
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authentificationService: AuthentificationService,
+    private snackbarService: SnackbarService,
     private router: Router,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
@@ -82,13 +84,13 @@ export class LoginComponent implements OnInit {
       if (resUser.length > 0) {
         self.authentificationService.login(resUser[0]);
       } else {
-        self.openSnackbar('Identifiant ou mot de passe incorrect');
+        self.snackbarService.openSnackBar('\u2718 Identifiant ou mot de passe incorrect');
       }
     })
   }
 
   /**
-   * Regioster user in database
+   * Register user in database
    */
   signUp() {
     let user: User = {
@@ -103,7 +105,7 @@ export class LoginComponent implements OnInit {
     self.userService.getUserByName(user)
     .then(function(resUser) {
       if (resUser.length > 0) {
-        self.openSnackbar('Identifiant déjà utilisé');
+        self.snackbarService.openSnackBar('\u2718 Identifiant déjà utilisé');
         return;
       } else {
         return self.userService.createUser(user);
@@ -117,17 +119,7 @@ export class LoginComponent implements OnInit {
       // Stop loading
       dialogRef.close();
       // Inform user
-      self.openSnackbar('Le compte ' + user.name + ' a bien été créé');
-    });
-  }
-
-  /**
-   * Open snackbar to show some message
-   * @param {string} message Info message
-   */
-  openSnackbar(message:string) {
-    this.snackBar.open(message, null, {
-      duration: 2000,
+      self.snackbarService.openSnackBar('\u2714 Le compte ' + user.name + ' a bien été créé');
     });
   }
 
