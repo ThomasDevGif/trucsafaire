@@ -31,7 +31,7 @@ export class ListComponent implements OnInit {
   public hideDone: boolean = false;
 
   inputSelectedList = new FormControl();
-  lists: List[];
+  lists: List[] = [];
   sharedLists: List[];
   selectedList: List;
   items: Item[];
@@ -134,6 +134,12 @@ export class ListComponent implements OnInit {
 
   /** Refresh items from server */
   refreshItems() {
+    if (!this.selectedList) {
+      if (this.dialogRef != null) this.dialogRef.close();
+      this.dialogRef = null;
+      return;
+    }
+
     let self = this;
 
     if (null == self.dialogRef) {

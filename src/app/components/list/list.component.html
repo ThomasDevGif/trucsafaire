@@ -1,4 +1,4 @@
-<div *ngIf="!dialogRef" class="my-container my-scrollable-container">
+<div *ngIf="dialogRef == null" class="my-container my-scrollable-container">
   <span class="my-spacer hide-sm"></span>
 
   <div class="my-list-container">
@@ -6,7 +6,7 @@
     <mat-card class="my-full-width show-sm">
       <mat-card-content class="my-column">
         <div class="my-row">
-          <mat-form-field style="flex: 1">
+          <mat-form-field style="flex: 1" *ngIf="lists.length > 0">
             <mat-select placeholder="Choisir une liste" [formControl]="inputSelectedList" (change)="onSelectChange()">
               <mat-option *ngFor="let list of lists" [value]="list">
                 {{ list.name }}
@@ -50,7 +50,7 @@
           <mat-icon aria-label="Close" class="my-pointer" (click)="showNewListInput = false">close</mat-icon>
         </form>
 
-        <mat-list role="list">
+        <mat-list role="list" *ngIf="lists.length > 0">
           <h3 mat-subheader>Mes listes</h3>
           <mat-list-item *ngFor="let list of lists" class="my-list-item" (click)="onSelectedListChange(list)">
             <p mat-line> {{list.name}} </p>
@@ -65,7 +65,7 @@
     </mat-card>
 
     <!-- Selected list items -->
-    <mat-card class="my-list">
+    <mat-card *ngIf="selectedList" class="my-list">
       <mat-card-header class="my-card-title">
         <span>{{selectedList.name}}</span>
         <span class="my-flex-spacer"></span>
@@ -99,7 +99,7 @@
           </mat-form-field>
           <mat-icon aria-label="Close" class="my-pointer" (click)="toggleNewItemInput(false)">close</mat-icon>
         </form>
-        
+
         <mat-list>
           <h3 mat-subheader (click)="hideToDo = !hideToDo" class="my-pointer my-row">
             <mat-icon *ngIf="!hideToDo">expand_less</mat-icon>
@@ -135,6 +135,9 @@
           </mat-list-item>
         </mat-list>
       </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="!selectedList" class="my-full-width">
+      Veuillez créer une nouvelle liste.
     </mat-card>
   </div>
 

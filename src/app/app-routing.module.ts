@@ -23,23 +23,23 @@ const routes: Routes = [
   }, {
     path: 'kitchen',
     component: KitchenComponent,
-    // canActivate: [AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   }, {
     path: 'recipes',
     component: RecipeComponent,
-    // canActivate: [AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   }, {
     path: 'recipe-details',
     component: RecipeDetailsComponent,
-    // canActivate: [AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   }, {
     path: 'recipe-create',
     component: RecipeCreateComponent,
-    // canActivate: [AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   }, {
     path: 'ingredients',
     component: IngredientComponent,
-    // canActivate: [AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   }, {
     path: '',
     component: ListComponent,

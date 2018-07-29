@@ -43,7 +43,7 @@
           <input matInput type="number" placeholder="Temps" formControlName="recipeTime" name="recipeTime">
         </mat-form-field>
 
-        <div class="my-row">
+        <!-- <div class="my-row">
           <mat-form-field class="my-margin-top" style="flex: 1;">
             <input type="text" placeholder="Ajouter des ingrédients" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
@@ -55,7 +55,7 @@
           <button mat-mini-fab color="primary" (click)="addSelectedIngredient()">
             <mat-icon aria-label="Add">add</mat-icon>
           </button>
-        </div>
+        </div> -->
 
         <mat-list role="list">
           <mat-list-item role="listitem" *ngFor="let selectedIngredient of selectedIngredients" class="my-full-width my-row">
